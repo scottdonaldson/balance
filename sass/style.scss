@@ -45,6 +45,7 @@
 
 $menu_item_padding_top: 0.8em;
 $menu_item_padding_bottom: 1em;
+$menu_item_height: $menu_item_padding_top + $menu_item_padding_bottom + 1em;
 
 header {
 	left: 0;
@@ -64,10 +65,10 @@ header {
 
 		& > ul > li {
 			background: $purple;
-			height: $menu_item_padding_top + $menu_item_padding_bottom + 1em;
-			display: inline-block;
+			height: $menu_item_height;
+			float: left;
+			margin: 0 2px;
 			padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
-			vertical-align: top;
 
 			span, a, a:visited {
 				color: #fff;
@@ -77,25 +78,94 @@ header {
 
 		.highlight {
 			background: $lavender;
-			margin-left: 15px;
 		}
 	}
 }
 
 #logo, #menu {
-	width: 220px;
+	width: 24%;
 }
 
 #logo {
 	border-bottom: 2px solid $lavender;
+	margin-left: 0;
 	padding-top: 0.75em;
+	img {
+		width: 180px;
+	}
 }
 
 #menu {
-	.menu {
-		position: absolute;
-		top: -999px;
+	background: transparent; // goes on the <span> instead
+	cursor: pointer;
+	padding: 0; // same
+
+	span { // this <span> is like a ghost <li> in the nav
+		background: $purple;
+		height: $menu_item_height;
+		display: block;
+		padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
+		z-index: 2;
 	}
+}
+
+.menu {
+	background: transparentize(#ccc, 0.2);
+	left: 0;
+	position: absolute;
+	top: -800px;
+	@include transition(0.5s);
+	width: 100%;
+
+	&.active {
+		top: $menu_item_height;
+	}
+}
+
+#sub-menu {
+	padding: 1em 0.2em;
+	z-index: 1;
+
+	a, a:visited {
+		color: #666;
+		display: block;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+
+		&:active, &:focus, &:hover {
+			color: #000;
+		}
+	}
+
+	.social {
+		text-align: center;
+		a {
+			display: inline-block;
+			font-size: 1.5em;
+			padding: 0.5em 0.8em 0;
+		}
+	}
+}
+
+#find-us {
+	float: right;
+	margin-right: 0;
+}
+
+#find-us-menu {
+	padding: 4%;
+	text-align: left;
+
+	address {
+		font-style: normal;
+		text-transform: none;
+	}
+}
+
+#map {
+	float: left;
+	margin-right: 4%;
+	width: 48%;
 }
 
 // ----- modules

@@ -28,16 +28,37 @@
 
 <header>
 
-    <nav role="navigation">
+    <nav role="navigation" class="full-width">
+        <div>
+            <div id="find-us-menu" class="menu">
+                <div id="map" class="module">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="100%" height="400" frameborder="0" style="border:0"></iframe>
+                    <a class="content footer" href="">Get Google Directions</a>
+                </div>
+                <address>4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
+            </div>
+        </div>
     	<ul>
             <li id="logo">
                 <a class="item" href="<?= home_url(); ?>">
                     <img src="<?= bloginfo('template_url'); ?>/images/logo.png" alt="Balance Studio">
                 </a>
             </li>
-            <li id="menu">
+            <li id="menu" menu-target="sub-menu">
+                <div id="sub-menu" class="menu">
+                    <?php wp_nav_menu(array(
+                        'theme_location' => 'Primary Menu',
+                        'menu_class' => '',
+                        'container' => 'li',
+                        'container_class' => ''
+                    )); ?>
+                    <div class="social">
+                        <a href="" class="icon-envelope"></a>
+                        <a href="" class="icon-twitter"></a>
+                        <a href="" class="icon-facebook"></a>
+                    </div>
+                </div>
                 <span>Menu</span>
-                <?php wp_nav_menu('Primary Menu'); ?>
             </li>
             <li>
                 <a href="">Schedule Appt</a>
@@ -45,7 +66,7 @@
             <li>
                 <a href="">Client Login</a>
             </li>
-            <li class="highlight">
+            <li id="find-us" class="highlight" menu-target="find-us-menu">
                 <a href="">Find us!</a>
             </li>
         </ul>
