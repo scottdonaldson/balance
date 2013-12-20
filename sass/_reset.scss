@@ -1,0 +1,12 @@
+/* Parsley & Sprouts WordPress-centric reset */
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+.alignnone { margin: 0 1em 1em 0.5em; }
+.alignright { float:right; margin: 0 0 1em 1em; }
+.alignleft { float:left; margin: 0 1em 1em 0; }
+.aligncenter { display: block; margin: 0 auto 0.5em auto; text-align: center; }
+
+img {
+	height: auto;
+	max-width: 100%;
+}

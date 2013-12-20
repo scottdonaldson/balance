@@ -1,0 +1,161 @@
+/* 
+ *	By config.rb, the CSS will always be minified.
+ */
+
+// ----- imports
+
+@import "compass";
+@import "normalize";
+@import "reset";
+@import "colors";
+@import "layout";
+@import "fonts";
+@import "oldie";
+
+// ----- mixins
+
+@mixin tight {
+	margin: 0;
+	padding: 0;
+}
+
+
+// ----- styles
+
+* { 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.abs {
+	position: absolute;
+	&.left { left: 0; }
+	&.right { right: 0; }
+}
+
+// ----- text styles
+
+.heading {
+	text-transform: uppercase;
+}
+
+// ----- header
+
+$menu_item_padding_top: 0.8em;
+$menu_item_padding_bottom: 1em;
+
+header {
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+
+	nav {
+		@include brandon;
+		text-align: center;
+
+		ul {
+			list-style-type: none;
+			@include tight;
+		}
+
+		& > ul > li {
+			background: $purple;
+			height: $menu_item_padding_top + $menu_item_padding_bottom + 1em;
+			display: inline-block;
+			padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
+			vertical-align: top;
+
+			span, a, a:visited {
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+
+		.highlight {
+			background: $lavender;
+			margin-left: 15px;
+		}
+	}
+}
+
+#logo, #menu {
+	width: 220px;
+}
+
+#logo {
+	border-bottom: 2px solid $lavender;
+	padding-top: 0.75em;
+}
+
+#menu {
+	.menu {
+		position: absolute;
+		top: -999px;
+	}
+}
+
+// ----- modules
+
+.module {
+	background: #fff;
+	
+	.content {
+		padding: 1em 2em;
+
+		h1, h2, h3 {
+			color: $turquoise;
+			font-size: 3em;
+			margin: 0;
+
+			& + p {
+				margin-top: 0;
+			}
+		}
+
+			// Cribbed from Chris Coyier/CSS-Tricks: http://css-tricks.com/spacing-the-bottom-of-modules/
+			& > *:first-child,
+			& > *:first-child > *:first-child,
+			& > *:first-child > *:first-child > *:first-child {
+				margin-top: 0;
+			}
+			& > *:last-child,
+			& > *:last-child > *:last-child,
+			& > *:last-child > *:last-child > *:last-child {
+				margin-bottom: 0;
+			}
+	}
+
+	.footer {
+		background: $purple;
+		border-bottom: 2px solid $lavender;
+		color: #fff;
+		display: block;
+		@include brandon;
+		text-decoration: none;
+
+		a, a:visited { 
+			color: #fff;
+		}
+	}
+}
+
+// ----- home page
+
+.home {
+	section {
+		background: #eee;
+		padding-top: 30%;
+		&:nth-child(2n + 1) {
+			background: #ddd;
+		}
+
+		.module {
+			bottom: -80px;
+			width: 40%;
+		}
+	}
+}
