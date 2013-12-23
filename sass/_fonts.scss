@@ -33,6 +33,7 @@
 
 @mixin brandon {
 	font-family: "Brandon";
+	line-height: 1.2;
 	text-transform: uppercase;
 }
 
@@ -119,3 +120,7 @@ body, .delicious {
 .icon-envelope:before {
 	content: "\e602";
 }
+.icon-file:before {
+	content: "\e603";
+}
+

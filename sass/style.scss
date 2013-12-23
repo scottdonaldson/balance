@@ -12,22 +12,16 @@
 @import "fonts";
 @import "oldie";
 
-// ----- mixins
+// ----- mixins, OO classes
 
 @mixin tight {
 	margin: 0;
 	padding: 0;
 }
+.tight { @include tight; }
 
-
-// ----- styles
-
-* { 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	position: relative;
-}
+.lowercase { text-transform: none; }
+.uppercase { text-transform: uppercase; }
 
 .abs {
 	position: absolute;
@@ -35,16 +29,25 @@
 	&.right { right: 0; }
 }
 
-// ----- text styles
+// ----- styles
 
-.heading {
-	text-transform: uppercase;
+* { 
+	box-sizing: border-box;
+	position: relative;
+}
+
+body { 
+	color: $default;
+}
+
+a {
+	transition: 0.2s;
 }
 
 // ----- header
 
-$menu_item_padding_top: 0.8em;
-$menu_item_padding_bottom: 1em;
+$menu_item_padding_top: 1em;
+$menu_item_padding_bottom: 0.9em;
 $menu_item_height: $menu_item_padding_top + $menu_item_padding_bottom + 1em;
 
 header {
@@ -73,6 +76,11 @@ header {
 			span, a, a:visited {
 				color: #fff;
 				text-decoration: none;
+
+				&:active,
+				&:hover {
+					color: $green;
+				}
 			}
 		}
 
@@ -89,7 +97,7 @@ header {
 #logo {
 	border-bottom: 2px solid $lavender;
 	margin-left: 0;
-	padding-top: 0.75em;
+	padding-top: 0.6em;
 	img {
 		width: 180px;
 	}
@@ -110,11 +118,11 @@ header {
 }
 
 .menu {
-	background: transparentize(#ccc, 0.2);
+	background: transparentize($green, 0.05);
 	left: 0;
 	position: absolute;
 	top: -800px;
-	@include transition(0.5s);
+	transition: 0.5s;
 	width: 100%;
 
 	&.active {
@@ -127,13 +135,13 @@ header {
 	z-index: 1;
 
 	a, a:visited {
-		color: #666;
+		color: $default;
 		display: block;
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 
 		&:active, &:focus, &:hover {
-			color: #000;
+			color: $purple;
 		}
 	}
 
@@ -156,8 +164,9 @@ header {
 	padding: 4%;
 	text-align: left;
 
-	address {
-		font-style: normal;
+	address, #tel {
+		font-size: 1.2em;
+		margin: 1em 0;
 		text-transform: none;
 	}
 }
@@ -174,7 +183,7 @@ header {
 	background: #fff;
 	
 	.content {
-		padding: 1em 2em;
+		padding: 2em;
 
 		h1, h2, h3 {
 			color: $turquoise;
@@ -205,10 +214,16 @@ header {
 		color: #fff;
 		display: block;
 		@include brandon;
+		padding-top: 1em;
+		padding-bottom: 0.8em;
 		text-decoration: none;
+	}
 
-		a, a:visited { 
-			color: #fff;
+	a.footer, a.footer:visited { 
+		color: #fff;
+		&:active, &:focus, &:hover {
+			background: $turquoise;
+			border-color: $green;
 		}
 	}
 }
@@ -216,16 +231,142 @@ header {
 // ----- home page
 
 .home {
-	section {
-		background: #eee;
+	main > section {
+		background-color: $default;
+		background-position: 50% 50%;
+		background-size: cover;
+		opacity: 0.5;
 		padding-top: 30%;
-		&:nth-child(2n + 1) {
-			background: #ddd;
-		}
+		transition: 0.25s;
 
 		.module {
 			bottom: -80px;
+			opacity: 0;
+			transition: 0.25s;
 			width: 40%;
+		}
+
+		&.active {
+			opacity: 1;
+			.module {
+				opacity: 1;
+			}
 		}
 	}
 }
+
+$from_blog: 154px;
+#updates-specials {
+	background: $green;
+	padding: 120px 0 60px;
+
+	section {
+		padding-right: $from_blog;
+	}
+
+	.post {
+		padding-right: 2px;
+		margin-bottom: 2px;
+	}
+
+	.header {
+		cursor: pointer;
+		@include brandon;
+		height: ($from_blog - 4px) / 3;
+
+		&.active, &:active, &:hover {
+			.title { color: $default; }
+		}
+	}
+
+	time {
+		background: $lavender;
+		color: $purple;
+		float: left;
+		width: 20%;
+	}
+
+	.title {
+		background: #fff;
+		color: $turquoise;
+		float: left;
+		transition: 0.2s;
+		width: 80%;
+	}
+
+	time, .title {
+		height: 100%;
+		padding: 1.1em 2em 0.9em;
+	}
+
+	.summary {
+		background: $purple;
+		color: #fff;
+		display: none;
+		padding: 2em;
+	}
+}
+
+	#from-blog {
+		background: $purple;
+		height: $from_blog;
+		padding: 1.5em 1em;
+		position: absolute;
+		right: 0;
+		text-overflow: ellipsis;
+		top: 0;
+		transition: 0.2s;
+		width: $from_blog;
+
+		&:hover {
+			background: $turquoise;
+		}
+
+		h2 { 
+			font-size: 1.3em;
+			margin-top: 2px;
+		}
+
+		a, a:visited {
+			color: #fff;
+			display: block;
+			text-decoration: none;
+		}
+	}
+
+// ----- Footer
+
+footer {
+	padding: 20px 0 5px;
+	a, a:visited {
+		color: #fff;
+		text-decoration: none;
+		&:active, &:focus, &:hover {
+			text-decoration: underline;
+		}
+	}
+}
+	#copyright {
+		font-size: 0.9em;
+	}
+
+	#ext-links {
+		padding-top: 10px;
+
+		.icon {
+			font-size: 1.4em;
+			text-decoration: none !important; // don't underline on hover
+			top: 0.2em;
+		}
+
+		a {
+			display: inline-block;
+			margin-left: 20px;
+			&:active, &:focus, &:hover {
+				text-decoration: none;
+				span {
+					text-decoration: underline;
+				}
+			}
+		}
+	}

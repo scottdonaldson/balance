@@ -1,3 +1,7 @@
+$default: #515151;
+	.default { color: $default; }
+	.bg-default { background-color: $default; }
+
 $purple: #3C2B72;
 	.purple { color: $purple; }
 	.bg-purple { background-color: $purple; }
@@ -9,3 +13,10 @@ $lavender: #9BA1C4;
 $turquoise: #85BAB9;
 	.turquoise { color: $turquoise; }
 	.bg-turquoise { background-color: $turquoise; }
+
+$green: #C7D8D6;
+	.green { color: $green; }
+	.bg-green { background-color: $green; }
+
+.white { color: #fff; }
+.bg-white { background-color: #fff; }

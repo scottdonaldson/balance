@@ -1,35 +1,31 @@
 </main>
 
-<footer class="full-width overflow">
+<footer class="white bg-purple">
 
-	<div class="footer-links clearfix">
-		<a class="button first" href="http://www.razoo.com/story/Tcbm-Booksatwork" target="_blank">Give</a>
-		<a class="button last" href="#" id="email-subscribe">Newsletter</a>
-		<form class="tooltip" action="http://booksatwork.us5.list-manage.com/subscribe/post" method="POST">
-			<div class="content bg-blue-light with-tab">
-				<p id="close" class="alignright">&#10005;</p>
-				<input type="hidden" name="u" id="u" value="50176d9fdf">
-				<input type="hidden" name="id" id="id" value="332a286a5c">
+	<div class="full-width clearfix">
+		<div id="copyright" class="alignleft">
+			&copy; <?= date('Y'); ?> All Rights Reserved, balance Pilates &amp; Yoga
+			<address>
+				4719 Rosedale Ave. Bethesda, MD 20814
+			</address>
+			design + code by <a href="http://www.parsleyandsprouts.com">Parsley &amp; Sprouts</a>
+		</div>
 
-				<input type="email" name="MERGE0" id="MERGE0" required placeholder="Email (required)">
-				<input type="text" name="MERGE1" id="MERGE1" placeholder="First Name">
-				<input type="text" name="MERGE2" id="MERGE2" placeholder="Last Name" class="last">
-				<input type="hidden" name="EMAILTYPE" id="EMAILTYPE" value="html">
-
-				<input type="submit" name="submit" id="submit" value="Subscribe" class="tab">
-			</div>
-		</form>
+		<div id="ext-links" class="alignright uppercase">
+			<a href="#">
+				<span class="icon icon-file"></span> <span>Policies</span>
+			</a>
+			<a href="#">
+				<span class="icon icon-envelope"></span> <span>Join the newsletter</span>
+			</a>
+			<a href="#">
+				<span class="icon icon-twitter"></span> <span>Follow us</span>
+			</a>
+			<a href="#">
+				<span class="icon icon-facebook"></span> <span>Like us</span>
+			</a>
+		</div>
 	</div>
-
-	<div class="footer-links caps sans clearfix">
-		<a href="https://www.facebook.com/pages/Books-at-Work/563896806961309" target="_blank">Facebook</a>
-		<a href="https://www.linkedin.com/company/that-can-be-me-inc" target="_blank">LinkedIn</a>
-		<a href="https://twitter.com/books_at_work" target="_blank">Twitter</a>
-		<a href="http://www.thatcanbeme.org/" target="_blank">That Can Be Me, Inc.</a>
-	</div>
-	<p class="aligncenter copyright small">
-		&copy; <?= date('Y'); ?> That Can Be Me, Inc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:info@thatcanbeme.org">info@thatcanbeme.org</a>
-	</p>
 </footer> 
 
 </div><!-- #page -->

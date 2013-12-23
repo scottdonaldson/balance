@@ -33,9 +33,14 @@
             <div id="find-us-menu" class="menu">
                 <div id="map" class="module">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="100%" height="400" frameborder="0" style="border:0"></iframe>
-                    <a class="content footer" href="">Get Google Directions</a>
+                    <a class="content footer" href="#">Get Google Directions</a>
                 </div>
                 <address>4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
+                <span id="tel">T. <tel></tel>301.986.1730</span>
+
+                <h3>Parking</h3>
+                <p class="lowercase delicious">Etiam semper lorem ac risus lacinia accumsan. Etiam rutrum magna id semper dignissim. Sed commodo elit sem. Vivamus est lorem, consectetur at egestas vitae, mattis a ipsum.</p>
+                <p class="lowercase delicious">Etiam semper lorem ac risus lacinia accumsan. Etiam rutrum magna id semper dignissim. Sed commodo elit sem. Vivamus est lorem, consectetur at egestas vitae, mattis a ipsum.</p>
             </div>
         </div>
     	<ul>
@@ -53,21 +58,21 @@
                         'container_class' => ''
                     )); ?>
                     <div class="social">
-                        <a href="" class="icon-envelope"></a>
-                        <a href="" class="icon-twitter"></a>
-                        <a href="" class="icon-facebook"></a>
+                        <a href="#" class="icon-envelope"></a>
+                        <a href="#" class="icon-twitter"></a>
+                        <a href="#" class="icon-facebook"></a>
                     </div>
                 </div>
                 <span>Menu</span>
             </li>
             <li>
-                <a href="">Schedule Appt</a>
+                <a href="#">Schedule Appt</a>
             </li>
             <li>
-                <a href="">Client Login</a>
+                <a href="#">Client Login</a>
             </li>
             <li id="find-us" class="highlight" menu-target="find-us-menu">
-                <a href="">Find us!</a>
+                <a href="#">Find us!</a>
             </li>
         </ul>
     </nav> 
