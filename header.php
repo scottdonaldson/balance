@@ -52,7 +52,7 @@
             <li id="menu" menu-target="sub-menu">
                 <div id="sub-menu" class="menu">
                     <?php wp_nav_menu(array(
-                        'theme_location' => 'Primary Menu',
+                        'theme_location' => 'primary',
                         'menu_class' => '',
                         'container' => 'li',
                         'container_class' => ''

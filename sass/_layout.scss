@@ -5,3 +5,29 @@
 	padding-right: 40px;
 	padding-left: 40px;
 }
+
+$break_half: 800px;
+// A casual grid system
+.half {
+	float: left;
+	margin-right: 4%;
+	width: 48%;
+	@media screen and (max-width: $break_half) {
+		float: none;
+		margin-right: 0;
+		width: 100%;
+	}
+}
+.third {
+	float: left;
+	margin-right: 2%;
+	width: 32%;
+	&.two { width: 66%; }
+}
+.quarter {
+	float: left;
+	margin-right: 3%;
+	width: 22.75%;
+}
+.first { margin-top: 0; margin-left: 0 !important; }
+.last { margin-bottom: 0; margin-right: 0 !important; }

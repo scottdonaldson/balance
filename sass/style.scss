@@ -23,10 +23,17 @@
 .lowercase { text-transform: none; }
 .uppercase { text-transform: uppercase; }
 
+.big { font-size: 1.2em; }
+
 .abs {
 	position: absolute;
 	&.left { left: 0; }
 	&.right { right: 0; }
+}
+
+.background-cover {
+	background-position: 50% 50%;
+	background-size: cover;
 }
 
 // ----- styles
@@ -180,32 +187,41 @@ header {
 // ----- modules
 
 .module {
-	background: #fff;
 	
 	.content {
 		padding: 2em;
 
+		&.heading {
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+
+			&.bg-turquoise { 
+				border-bottom: 2px solid $green;
+				margin-bottom: 2px;
+			}
+
+			h1, h2, h3 { color: #fff; margin: 0; }
+		}
+
 		h1, h2, h3 {
-			color: $turquoise;
-			font-size: 3em;
-			margin: 0;
+			margin-top: 0;
 
 			& + p {
 				margin-top: 0;
 			}
 		}
 
-			// Cribbed from Chris Coyier/CSS-Tricks: http://css-tricks.com/spacing-the-bottom-of-modules/
-			& > *:first-child,
-			& > *:first-child > *:first-child,
-			& > *:first-child > *:first-child > *:first-child {
-				margin-top: 0;
-			}
-			& > *:last-child,
-			& > *:last-child > *:last-child,
-			& > *:last-child > *:last-child > *:last-child {
-				margin-bottom: 0;
-			}
+		// Cribbed from Chris Coyier/CSS-Tricks: http://css-tricks.com/spacing-the-bottom-of-modules/
+		& > *:first-child,
+		& > *:first-child > *:first-child,
+		& > *:first-child > *:first-child > *:first-child {
+			margin-top: 0;
+		}
+		& > *:last-child,
+		& > *:last-child > *:last-child,
+		& > *:last-child > *:last-child > *:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	.footer {
@@ -233,8 +249,6 @@ header {
 .home {
 	main > section {
 		background-color: $default;
-		background-position: 50% 50%;
-		background-size: cover;
 		opacity: 0.5;
 		padding-top: 30%;
 		transition: 0.25s;
@@ -244,6 +258,12 @@ header {
 			opacity: 0;
 			transition: 0.25s;
 			width: 40%;
+		}
+
+		h2 {
+			color: $turquoise;
+			font-size: 3em;
+			top: 0; // don't "fix" these titles
 		}
 
 		&.active {
@@ -333,6 +353,113 @@ $from_blog: 154px;
 			text-decoration: none;
 		}
 	}
+
+// ----- Pages
+
+#masthead {
+
+	.module {
+		margin-top: 200px;
+		max-width: 500px;
+		width: 50%;
+	}
+
+	p {
+		font-size: 1.2em;
+	}
+}
+
+.scroll-down {
+	padding: 10px 0 0 10px;
+	transition: 0.8s;
+	.preload & { opacity: 0; } // fade in on page load
+
+	aside {
+		float: left;
+		height: 40px;
+		top: 8px;
+		transform: rotate(-45deg);
+		transform-origin: 0 0;
+		width: 80px;
+
+		&:before,
+		&:after {
+			background: #fff;
+			border-radius: 2px;
+			content: "";
+			display: block;
+			left: 0;
+			position: absolute;
+		}
+		&:before {
+			height: 40px;
+			top: 0;
+			width: 4px;
+		}
+		&:after {
+			bottom: 0;
+			height: 4px;
+			width: 40px;
+		}
+	}
+	p {
+		color: #fff;
+		font-weight: bold;
+		line-height: 1.2;
+		margin-top: 0;
+		text-transform: uppercase;
+	}
+}
+
+#content {
+	background: $green;
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
+// ----- Getting Started
+
+#buttons {
+	margin-bottom: 5em;
+
+	a {
+		@include brandon;
+		font-size: 1.3em;
+		padding: 1em 1em 0.8em;
+
+		&:active, &:focus, &:hover {
+			background: $purple;
+		}
+
+		span {
+			font-size: 1.6em;
+			line-height: 0;
+			margin-right: 0.2em;
+			top: 0.15em;
+		}
+	}
+}
+
+.learn-more {
+	float: right;
+	margin-left: 20px;
+	width: 200px;
+	z-index: 2;
+
+	a, a:visited {
+		background: $purple;
+		color: #fff;
+		display: block;
+		@include brandon;
+		margin-bottom: 10px;
+		padding: 1em 1em 0.8em;
+		text-align: center;
+
+		&:active, &:focus, &:hover {
+			background: $green;
+		}
+	}
+}
 
 // ----- Footer
 

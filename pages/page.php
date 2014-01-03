@@ -8,7 +8,7 @@
 				<h1><?php the_title(); ?></h1>
 			</div>
 			<div class="content bg-white">
-				<p><?php the_field('intro_text'); ?></p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis natus aliquid facilis quae enim eaque itaque tenetur veritatis similique ab expedita corporis architecto voluptatum praesentium voluptate quas hic suscipit sapiente.</p>
 			</div>
 			<?php if (get_field('scroll_text')) { ?>
 			<div class="scroll-down">

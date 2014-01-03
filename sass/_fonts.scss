@@ -39,6 +39,9 @@
 
 h1, h2, h3, h4, h5, h6, .brandon {
 	@include brandon;
+	// Brandon seems to have some seriously messed-up line height issues,
+	// thus the following fix (only on titles):
+	top: 0.15em;
 }
 
 /*! A font by Jos Buivenga (exljbris) -> www.exljbris.com */
@@ -123,4 +126,3 @@ body, .delicious {
 .icon-file:before {
 	content: "\e603";
 }
-

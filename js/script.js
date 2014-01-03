@@ -25,6 +25,15 @@
 	}
 	menuTargets.mouseenter( activateMenu ).mouseleave( deactivateMenu );
 
+	// ----- Pages: make the masthead the height of the screen
+
+	var masthead = $('#masthead');
+	function setMastheadHeight() {
+		masthead.css('height', !body.hasClass('admin-bar') ? win.height() : win.height() - 28);
+	};
+	setMastheadHeight();
+	win.on('load resize', setMastheadHeight);
+
 	// ----- Home page scrolling
 
 	var homeSections = $('.home main > section');
