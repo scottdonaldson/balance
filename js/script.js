@@ -52,8 +52,36 @@
 	}
 
 	// ----- Home page updates and specials
+
 	$('#updates-specials .header').click(function(){
 		$(this).toggleClass('active').next().slideToggle();
+	});
+
+	// ----- "Scroll down" paragraph (if only on one line)
+
+	var p = $('.scroll-down p');
+	function posScrollDownP() {
+		if ( p.height() < 44 ) {
+			p.css('top', 0.5 * ( 44 - p.height() ) )
+		} else {
+			p.css('top', 0);
+		}
+	}
+	win.on('load resize', posScrollDownP);
+
+	// ----- Instructors
+	
+	var instructors = $('.instructor');
+	instructors.click(function(){
+		var $this = $(this);
+		if (!$this.hasClass('active')) {
+			$this.addClass('active').siblings().removeClass('active');
+			$this.parent().next().slideUp().html( $this.attr('data-bio') ).delay(100).slideDown();
+		} else {
+			$this.removeClass('active');
+			$this.parent().next().slideUp();
+		}
+		
 	});
 
 	// ----- Remove the preload class

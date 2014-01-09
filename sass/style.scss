@@ -190,6 +190,7 @@ header {
 	
 	.content {
 		padding: 2em;
+		&.lesser { padding: 1em 1em 0.5em; }
 
 		&.heading {
 			padding-top: 0.5em;
@@ -263,6 +264,7 @@ header {
 		h2 {
 			color: $turquoise;
 			font-size: 3em;
+			margin-bottom: 0;
 			top: 0; // don't "fix" these titles
 		}
 
@@ -457,6 +459,50 @@ $from_blog: 154px;
 
 		&:active, &:focus, &:hover {
 			background: $green;
+		}
+	}
+}
+
+// ----- Instructors
+
+.instructors {
+	border-top: 3px solid $green;
+	.heading + & {
+		border-top: 0;
+	}
+}
+
+.instructor {
+	border-left: 1px solid $green;
+	border-right: 1px solid $green;
+	cursor: pointer;
+	float: left;
+	width: 33.333%;
+	&.first { left: -1px; }
+	&.last { left: 1px; }
+
+	.name {
+		background: $lavender;
+		transition: 0.2s;
+
+		h3 { 
+			color: $purple;
+			display: inline; 
+			margin-right: 5px;
+			top: 0;
+		}
+
+		span {
+			color: #fff;
+		}
+	}
+
+	&.active {
+		.name {
+			background: $purple;
+			h3 {
+				color: $lavender;
+			}
 		}
 	}
 }
