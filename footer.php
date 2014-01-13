@@ -33,6 +33,9 @@
 <?php /* Modernizr and jQuery are included in the <head>, other scripts here */ ?>
 <script src="<?= bloginfo('template_url'); ?>/js/plugins.js"></script>
 <script src="<?= bloginfo('template_url'); ?>/js/script.js"></script>
+<?php if (is_page('Services')) { ?>
+	<script src="<?= bloginfo('template_url'); ?>/js/services.js"></script>
+<?php } ?>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

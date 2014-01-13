@@ -38,7 +38,7 @@ the_post(); ?>
 		<div class="module">
 			<div class="content bg-purple heading">
 				<h2>Getting Started with Pilates</h2>
-				<div class="scroll-up"></div>
+				<div class="scroll-up"><aside></aside></div>
 			</div>
 			<div class="content clearfix bg-white">
 				<h3>Introductory Lessons</h3>

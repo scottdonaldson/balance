@@ -18,5 +18,7 @@ $green: #C7D8D6;
 	.green { color: $green; }
 	.bg-green { background-color: $green; }
 
+$transparent_green: transparentize($green, 0.05);
+
 .white { color: #fff; }
 .bg-white { background-color: #fff; }

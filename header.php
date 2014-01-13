@@ -20,6 +20,25 @@
 </head>
 
 <body <?php body_class('preload'); ?>>
+
+    <nav id="small-screen-menu">
+        <ul>
+            <?php wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class' => '',
+                'container' => 'li',
+                'container_class' => ''
+            )); ?>
+            <li>
+                <a href="#">Schedule Appt</a>
+            </li>
+            <li>
+                <a href="#">Client Login</a>
+            </li>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="250" height="250" frameborder="0" style="border:0"></iframe>
+        </ul>
+    </nav>
+
 <div id="page" class="hfeed site">
 
 	<!--[if lt IE 8]>
@@ -73,6 +92,11 @@
             </li>
             <li id="find-us" class="highlight" menu-target="find-us-menu">
                 <a href="#">Find us!</a>
+            </li>
+            <li id="small-screen-menu-icon">
+                <div class="stripe"></div>
+                <div class="stripe"></div>
+                <div class="stripe"></div>
             </li>
         </ul>
     </nav> 

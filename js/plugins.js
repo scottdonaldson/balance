@@ -11,30 +11,32 @@ if (!(window.console && console.log)) {
     }());
 }
 
-// Elements to be made the same height under all conditions
-var groups = [];
+// Global object (make sure we didn't initialize it in-page)
+var BALANCE = window.BALANCE || {};
 
-// Create an array -- groups -- with the number of distinct .same-height groups
+// Elements to be made the same height under all conditions
+BALANCE['same-height-groups'] = {};
+
+// Create an object -- groups -- with key the group # and value the elems in that group
 $('.same-height[data-group]').each(function(){
     var $this = $(this);
-    if ($.inArray($this.attr('data-group'), groups) === -1) {
-        groups.push($this.attr('data-group'));
+    if ( !( $this.attr('data-group') in BALANCE['same-height-groups'] ) ) {
+        BALANCE['same-height-groups'][ $this.attr('data-group') ] = $('.same-height[data-group="' + $this.attr('data-group') + '"]');
     }
 });
 function makeSameHeight() {
-    for (var i = 0; i < groups.length; i++) {
-        var sameHeight = $('.same-height[data-group="' + groups[i] + '"]'),
-            targetHeight = 0;
-        sameHeight.height('auto').each(function() {
+    for (var i in BALANCE['same-height-groups']) {
+        var targetHeight = 0;
+
+        BALANCE['same-height-groups'][i].height('auto').each(function() {
             var $this = $(this);
             targetHeight = $this.height() > targetHeight ? $this.height() : targetHeight;
-        });
-        sameHeight.height(targetHeight);
+        }).height(targetHeight);
     }
 }
 // Call this a bunch of times -- there's some weird cross-browser issues
 $(document).ready(makeSameHeight);
-win.on('load resize', makeSameHeight);
+$(window).on('load resize', makeSameHeight);
 
 // popup links
 $('body').on('click', '.popup', function(e){

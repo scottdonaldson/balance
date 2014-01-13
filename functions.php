@@ -20,12 +20,13 @@ add_filter('excerpt_more', 'new_excerpt_more');
 // Remove some stuff from head
 remove_action('wp_head', 'wp_generator');
 
-// Include admin JS
-add_action( 'admin_head', 'custom_login_js');
+// Include admin JS and CSS
+add_action( 'admin_head', 'custom_admin');
 
-function custom_login_js() {
+function custom_admin() {
   $url = get_bloginfo('template_url');
   echo '<script src="'.$url.'/js/admin.js"></script>';
+  echo '<link rel="stylesheet" href="'.$url.'/css/admin.css">';
 }
 
 // Custom taxonomy for contributors

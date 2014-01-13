@@ -43,6 +43,11 @@
 	position: relative;
 }
 
+html {
+	background: $transparent_green;
+	overflow-x: hidden;
+}
+
 body { 
 	color: $default;
 }
@@ -51,18 +56,25 @@ a {
 	transition: 0.2s;
 }
 
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+
 // ----- header
 
 $menu_item_padding_top: 1em;
 $menu_item_padding_bottom: 0.9em;
 $menu_item_height: $menu_item_padding_top + $menu_item_padding_bottom + 1em;
 
+$small_screen_menu: 900px; // point at which we switch to small screen menu
+
 header {
 	left: 0;
 	position: absolute;
 	top: 0;
 	width: 100%;
-	z-index: 999;
+	z-index: 10;
 
 	nav {
 		@include brandon;
@@ -79,6 +91,10 @@ header {
 			float: left;
 			margin: 0 2px;
 			padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
+
+			@media screen and (max-width: $small_screen_menu) {
+				display: none;
+			}
 
 			span, a, a:visited {
 				color: #fff;
@@ -98,11 +114,13 @@ header {
 }
 
 #logo, #menu {
+	min-width: 200px;
 	width: 24%;
 }
 
 #logo {
 	border-bottom: 2px solid $lavender;
+	display: block;
 	margin-left: 0;
 	padding-top: 0.6em;
 	img {
@@ -125,7 +143,7 @@ header {
 }
 
 .menu {
-	background: transparentize($green, 0.05);
+	background: $transparent_green;
 	left: 0;
 	position: absolute;
 	top: -800px;
@@ -184,13 +202,60 @@ header {
 	width: 48%;
 }
 
+#small-screen-menu-icon {
+	display: none;
+
+	@media screen and (max-width: $small_screen_menu) {
+		display: block !important;
+		cursor: pointer;
+		float: right;
+	}
+
+	.stripe {
+		background: #fff;
+		border-radius: 2px;
+		height: 3px;
+		margin-bottom: 4px;
+		top: -1px;
+		transition: 0.2s;
+		width: 20px;
+	}
+	&:active .stripe { background: $lavender; }
+}
+
+#page {
+	@media screen and (min-width: $small_screen_menu) {
+		left: 0 !important;
+	}
+}
+
+#small-screen-menu {
+	display: none;
+
+	@media screen and (max-width: $small_screen_menu) {
+		display: block;
+		position: absolute;
+		left: 100%;
+		top: 0;
+		width: 75%;
+	}
+}
+
 // ----- modules
 
 .module {
 	
 	.content {
 		padding: 2em;
-		&.lesser { padding: 1em 1em 0.5em; }
+			@media screen and (max-width: 800px) {
+				padding: 1.5em;
+			}
+		&.lesser { 
+			padding: 1em 1em 0.5em;
+			@media screen and (max-width: 800px) {
+				padding: 0.75em 0.75em 0.35em;
+			}
+		}
 
 		&.heading {
 			padding-top: 0.5em;
@@ -201,14 +266,29 @@ header {
 				margin-bottom: 2px;
 			}
 
-			h1, h2, h3 { color: #fff; margin: 0; }
+			h1, h2, h3 { 
+				color: #fff;
+				font-size: 1.8em;
+				margin: 0; 
+			}
 		}
 
-		h1, h2, h3 {
+		h1, h2, h3, h4 {
 			margin-top: 0;
 
 			& + p {
 				margin-top: 0;
+			}
+
+			&:not(:first-child) {
+				margin-top: 2em;
+			}
+		}
+
+		p {
+			strong { 
+				color: $purple;
+				font-size: 1.1em; 
 			}
 		}
 
@@ -242,6 +322,10 @@ header {
 			background: $turquoise;
 			border-color: $green;
 		}
+	}
+
+	#content &:not(:first-child) {
+		margin-top: 5em;
 	}
 }
 
@@ -294,7 +378,7 @@ $from_blog: 154px;
 	.header {
 		cursor: pointer;
 		@include brandon;
-		height: ($from_blog - 4px) / 3;
+		min-height: ($from_blog - 4px) / 3;
 
 		&.active, &:active, &:hover {
 			.title { color: $default; }
@@ -359,6 +443,7 @@ $from_blog: 154px;
 // ----- Pages
 
 #masthead {
+	min-height: 530px !important;
 
 	.module {
 		margin-top: 200px;
@@ -419,6 +504,61 @@ $from_blog: 154px;
 	padding-bottom: 5em;
 }
 
+#page-intro {
+	margin-bottom: 4em;
+	h2 {
+		float: left;
+		margin: 0;
+		width: 40%;
+	}
+	p {
+		float: right;
+		margin: 0;
+		width: 55%;
+	}
+}
+
+.scroll-up {
+	background: $lavender;
+	cursor: pointer;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: 0.2s;
+	width: 3em;
+
+	&:active, &:hover { background: $turquoise; }
+
+	aside {
+		height: 12px;
+		margin: 0 auto;
+		top: 48%;
+		transform: rotate(135deg);
+		width: 12px;
+
+		&:before,
+		&:after {
+			background: #fff;
+			border-radius: 2px;
+			content: "";
+			display: block;
+			left: 0;
+			position: absolute;
+		}
+		&:before {
+			height: 12px;
+			top: 0;
+			width: 2px;
+		}
+		&:after {
+			bottom: 0;
+			height: 2px;
+			width: 12px;
+		}
+	}
+}
+
 // ----- Getting Started
 
 #buttons {
@@ -463,6 +603,12 @@ $from_blog: 154px;
 	}
 }
 
+// ----- Services
+
+.page-template-pagesservices-php {
+
+}
+
 // ----- Instructors
 
 .instructors {
@@ -487,9 +633,7 @@ $from_blog: 154px;
 
 		h3 { 
 			color: $purple;
-			display: inline; 
-			margin-right: 5px;
-			top: 0;
+			margin: 0;
 		}
 
 		span {
@@ -504,6 +648,19 @@ $from_blog: 154px;
 				color: $lavender;
 			}
 		}
+	}
+}
+
+// ----- Studio
+
+.page-template-pagesstudio-php {
+
+	.module {
+		.heading, img { cursor: pointer; }
+	}
+
+	.feature {
+		margin-bottom: 4px;
 	}
 }
 
@@ -543,3 +700,11 @@ footer {
 			}
 		}
 	}
+
+// ----- WP Stuff
+
+@media screen and (max-width: 600px) {
+	#wpadminbar {
+		position: fixed !important;
+	}
+}

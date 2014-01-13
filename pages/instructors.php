@@ -21,7 +21,7 @@ get_template_part('masthead'); ?>
 					<div class="instructor first" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<div class="same-height" data-group="1">
+							<div class="same-height clearfix" data-group="1">
 								<h3>Stacy Doe</h3> <span>Yoga &amp; Pilates</span>
 							</div>
 						</div>
@@ -29,7 +29,7 @@ get_template_part('masthead'); ?>
 					<div class="instructor" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<div class="same-height" data-group="1">
+							<div class="same-height clearfix" data-group="1">
 								<h3>Jane Doe</h3> <span>Yoga &amp; Gyrotonic</span>
 							</div>
 						</div>
@@ -37,7 +37,7 @@ get_template_part('masthead'); ?>
 					<div class="instructor last" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<div class="same-height" data-group="1">
+							<div class="same-height clearfix" data-group="1">
 								<h3>Alice Doe</h3> <span>Pilates &amp; Gyrotonic</span>
 							</div>
 						</div>
@@ -51,19 +51,25 @@ get_template_part('masthead'); ?>
 					<div class="instructor first" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<h3>Stacy Doe</h3> <span>Yoga &amp; Pilates</span>
+							<div class="same-height clearfix" data-group="2">
+								<h3>Stacy Doe</h3> <span>Yoga &amp; Pilates</span>
+							</div>
 						</div>
 					</div>
 					<div class="instructor" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<h3>Jane Doe</h3> <span>Yoga &amp; Gyrotonic</span>
+							<div class="same-height clearfix" data-group="2">
+								<h3>Jane Doe</h3> <span>Yoga &amp; Gyrotonic</span>
+							</div>
 						</div>
 					</div>
 					<div class="instructor last" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
 						<img src="http://placehold.it/500x500">
 						<div class="content name lesser">
-							<h3>Alice Doe</h3> <span>Pilates &amp; Gyrotonic</span>
+							<div class="same-height clearfix" data-group="2">
+								<h3>Alice Doe</h3> <span>Pilates &amp; Gyrotonic</span>
+							</div>
 						</div>
 					</div>
 				</div>

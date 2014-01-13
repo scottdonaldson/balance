@@ -73,8 +73,12 @@ the_post(); ?>
 						
 			<article class="post clearfix">
 				<div class="header">
-					<time>Sept 6-9</time>
-					<div class="title">Title of latest announcement or promotion</div>
+					<time>
+						<div class="same-height" data-group="1">Sept&nbsp;6-9</div>
+					</time>
+					<div class="title">
+						<div class="same-height" data-group="1">Title of latest announcement or promotion</div>
+					</div>
 				</div>
 				<div class="summary">
 					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque debitis impedit praesentium quae maiores et quia delectus minima culpa non eius reprehenderit itaque quis tempore inventore eveniet at unde blanditiis sit exercitationem ipsum quas iure!</div>
@@ -83,8 +87,12 @@ the_post(); ?>
 
 			<article class="post clearfix">
 				<div class="header">
-					<time>Oct 12</time>
-					<div class="title">Title of latest announcement or promotion</div>
+					<time>
+						<div class="same-height" data-group="2">Oct&nbsp;12</div>
+					</time>
+					<div class="title">
+						<div class="same-height" data-group="2">Title of latest announcement or promotion</div>
+					</div>
 				</div>
 				<div class="summary">
 					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto rem alias expedita nisi adipisci quo numquam distinctio voluptas voluptatem repellat quod quam delectus fugit assumenda repellendus recusandae dignissimos provident ex. Minima est ab distinctio blanditiis.</div>
@@ -93,8 +101,12 @@ the_post(); ?>
 
 			<article class="post clearfix">
 				<div class="header">
-					<time>Oct 31 - Nov 21</time>
-					<div class="title">Title of latest announcement or promotion</div>
+					<time>
+						<div class="same-height" data-group="3">Oct&nbsp;31 - Nov&nbsp;21</div>
+					</time>
+					<div class="title">
+						<div class="same-height" data-group="3">Title of latest announcement or promotion</div>
+					</div>
 				</div>
 				<div class="summary">
 					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo earum iusto officia asperiores molestiae eius laborum cumque. Culpa ducimus soluta veniam harum dignissimos praesentium autem qui iste tenetur fugit aspernatur nemo ad eveniet repellat magnam!</div>

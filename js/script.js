@@ -1,7 +1,8 @@
 (function($){
 
 	var win = $(window),
-		body = $('body');
+		body = $('body'),
+		page = $('#page');
 
 	// ----- Nav menu
 
@@ -24,6 +25,28 @@
 		}
 	}
 	menuTargets.mouseenter( activateMenu ).mouseleave( deactivateMenu );
+
+	// ----- Small screen menu
+
+	var smallScreenMenu = $('#small-screen-menu');
+	$('#small-screen-menu-icon').click(function(){
+		if ( !body.hasClass('small-screen-menu-active') ) {
+			page.animate({
+				left: '-75%'
+			});
+			smallScreenMenu.animate({
+				left: '25%'
+			});
+		} else {
+			page.animate({
+				left: 0
+			});
+			smallScreenMenu.animate({
+				left: '100%'
+			});
+		}
+		body.toggleClass('small-screen-menu-active');
+	});
 
 	// ----- Pages: make the masthead the height of the screen
 
@@ -61,13 +84,19 @@
 
 	var p = $('.scroll-down p');
 	function posScrollDownP() {
-		if ( p.height() < 44 ) {
-			p.css('top', 0.5 * ( 44 - p.height() ) )
-		} else {
-			p.css('top', 0);
-		}
+		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 )
 	}
 	win.on('load resize', posScrollDownP);
+
+	// ----- Scroll back up to the top of the page
+	body.on('click', '.scroll-up', function(){
+		$('html, body').animate({
+			scrollTop: 0
+		}, 800);
+		$(this).parent().css({
+			'padding-right': '3.5em' // prevent text in the heading from bumping into the scroll up arrow
+		});
+	})
 
 	// ----- Instructors
 	
@@ -81,7 +110,13 @@
 			$this.removeClass('active');
 			$this.parent().next().slideUp();
 		}
-		
+	});
+
+	// ----- Studio
+
+	var features = $('.page-template-pagesstudio-php .feature');
+	features.find('.heading, img').click(function(){
+		$(this).parent().find('.description').slideToggle();
 	});
 
 	// ----- Remove the preload class
@@ -90,4 +125,4 @@
 		$('.preload').removeClass('preload');
 	});
 
-})(jQuery);
+}(jQuery));
