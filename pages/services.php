@@ -3,12 +3,13 @@
 Template Name: Services
 */
 get_header();
-the_post(); ?>
+the_post();
 
-<script>
-	var BALANCE = window.BALANCE || {};
-	BALANCE.services = <?= json_encode(get_field('type')); ?>
-</script>
+function output_services() { ?>
+	<script>BALANCE.services = <?= json_encode(get_field('type')); ?></script>
+<?php } 
+add_action('wp_head', 'output_services');
+?>
 
 <section id="masthead" class="background-cover">
 	

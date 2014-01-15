@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="<?= bloginfo('template_url'); ?>/style.css">
     <link rel="stylesheet" href="<?= bloginfo('template_url'); ?>/css/style.css">
     <script src="<?= bloginfo('template_url'); ?>/js/vendor/modernizr.js"></script>
+
+    <script>
+    // Initialize global BALANCE object
+    var BALANCE = {};
+    </script>
 <?php wp_head(); ?>
 </head>
 

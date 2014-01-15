@@ -11,9 +11,6 @@ if (!(window.console && console.log)) {
     }());
 }
 
-// Global object (make sure we didn't initialize it in-page)
-var BALANCE = window.BALANCE || {};
-
 // Elements to be made the same height under all conditions
 BALANCE['same-height-groups'] = {};
 
