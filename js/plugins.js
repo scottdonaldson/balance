@@ -21,7 +21,7 @@ $('.same-height[data-group]').each(function(){
         BALANCE['same-height-groups'][ $this.attr('data-group') ] = $('.same-height[data-group="' + $this.attr('data-group') + '"]');
     }
 });
-function makeSameHeight() {
+BALANCE.makeSameHeight = function() {
     for (var i in BALANCE['same-height-groups']) {
         var targetHeight = 0;
 
@@ -32,8 +32,8 @@ function makeSameHeight() {
     }
 }
 // Call this a bunch of times -- there's some weird cross-browser issues
-$(document).ready(makeSameHeight);
-$(window).on('load resize', makeSameHeight);
+$(document).ready(BALANCE.makeSameHeight);
+$(window).on('load resize', BALANCE.makeSameHeight);
 
 // popup links
 $('body').on('click', '.popup', function(e){

@@ -31,10 +31,9 @@
 </div><!-- #page -->
 
 <?php /* Modernizr and jQuery are included in the <head>, other scripts here */ ?>
-<script src="<?= bloginfo('template_url'); ?>/js/plugins.js"></script>
-<script src="<?= bloginfo('template_url'); ?>/js/script.js"></script>
+<script src="<?= bloginfo('template_url'); ?>/js/balance.min.js"></script>
 <?php if (is_page('Services')) { ?>
-	<script src="<?= bloginfo('template_url'); ?>/js/services.js"></script>
+	<script src="<?= bloginfo('template_url'); ?>/js/services.min.js"></script>
 <?php } ?>
 
 <script>
