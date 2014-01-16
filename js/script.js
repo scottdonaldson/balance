@@ -13,9 +13,9 @@
 	}
 	function deactivateMenu() {
 		var target = $('#' + this.getAttribute('menu-target'));
-		target.is(':hover') ?
-			'' :
+		if ( !target.is(':hover') ) {
 			target.removeClass('active');
+		}
 
 		if ( !target.hasClass('listening') ) {
 			target.mouseleave(function(){
@@ -53,7 +53,7 @@
 	var masthead = $('#masthead');
 	function setMastheadHeight() {
 		masthead.css('height', !body.hasClass('admin-bar') ? win.height() : win.height() - 28);
-	};
+	}
 	setMastheadHeight();
 	win.on('load resize', setMastheadHeight);
 
@@ -84,7 +84,7 @@
 
 	var p = $('.scroll-down p');
 	function posScrollDownP() {
-		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 )
+		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 );
 	}
 	win.on('load resize', posScrollDownP);
 
@@ -96,7 +96,7 @@
 		$(this).parent().css({
 			'padding-right': '3.5em' // prevent text in the heading from bumping into the scroll up arrow
 		});
-	})
+	});
 
 	// ----- Instructors
 	

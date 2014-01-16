@@ -4,6 +4,13 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        jshint: {
+            options: {
+                force: true
+            },
+            all: ['Gruntfile.js', 'js/script.js']
+        },
+
         uglify: {
             build: {
                 files: {
@@ -40,7 +47,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['js/*.js'],
-                tasks: ['uglify'],
+                tasks: ['uglify', 'jshint'],
                 options: {
                     spawn: false,
                 }
@@ -57,13 +64,13 @@ module.exports = function(grunt) {
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
-    // grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['uglify', 'sass', 'autoprefixer', 'watch']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'autoprefixer', 'watch']);
 
 };
