@@ -4,25 +4,11 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        concat: {
-            // 2. Configuration for concatinating files goes here.
-            dist: {
-                src: [
-                    'js/plugins.js',
-                    'js/script.js'
-                ],
-                dest: 'js/balance.js'
-            }
-        },
-
         uglify: {
             build: {
-                src: 'js/balance.js',
-                dest: 'js/balance.min.js'
-            },
-            build: {
-                src: 'js/services.js',
-                dest: 'js/services.min.js'
+                files: {
+                    'js/balance.min.js': ['js/plugins.js', 'js/script.js']
+                }
             }
         },
 
@@ -39,10 +25,19 @@ module.exports = function(grunt) {
             }
         },
 
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions', 'ie 8', 'ie 9'],
+                single_file: {
+                    src: 'css/style.css'
+                },
+            }
+        },
+
         watch: {
             scripts: {
                 files: ['js/*.js'],
-                tasks: ['concat', 'uglify'],
+                tasks: ['uglify'],
                 options: {
                     spawn: false,
                 }
@@ -59,12 +54,13 @@ module.exports = function(grunt) {
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    // grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch']);
+    grunt.registerTask('default', ['uglify', 'sass', 'autoprefixer', 'watch']);
 
 };
