@@ -88,6 +88,13 @@
 	}
 	win.on('load resize', posScrollDownP);
 
+	// ----- "Scroll down": click on it to scroll to #content
+	p.parent().click(function() {
+		$('html, body').animate({
+			scrollTop: $('#content').position().top
+		}, 800);
+	});
+
 	// ----- Scroll back up to the top of the page
 	body.on('click', '.scroll-up', function(){
 		$('html, body').animate({

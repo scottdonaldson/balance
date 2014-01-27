@@ -2,17 +2,17 @@
 /*
 Template Name: Services
 */
-get_header();
-the_post();
 
 function output_services() { ?>
 	<script>BALANCE.services = <?= json_encode(get_field('type')); ?></script>
 <?php } 
 add_action('wp_head', 'output_services');
+
+get_header();
+the_post();
 ?>
 
 <section id="masthead" class="background-cover">
-	
 	<div class="full-width clearfix">
 		<div class="module">
 			<div class="content bg-turquoise heading">
@@ -20,6 +20,8 @@ add_action('wp_head', 'output_services');
 			</div>
 		</div>
 	</div>
+
+	<div id="services-nav"></div>
 
 </section>
 

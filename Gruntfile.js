@@ -34,10 +34,10 @@ module.exports = function(grunt) {
 
         autoprefixer: {
             options: {
-                browsers: ['last 2 versions', 'ie 8', 'ie 9'],
-                single_file: {
-                    src: 'css/style.css'
-                },
+                browsers: ['> 1%']
+            },
+            no_dest: {
+                src: 'css/style.css'
             }
         },
 
@@ -53,8 +53,8 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['sass/*.scss'],
-                tasks: ['sass'],
+                files: ['sass/*.scss', 'css/style.css'],
+                tasks: ['sass', 'autoprefixer'],
                 options: {
                     spawn: false
                 }

@@ -1,59 +1,59 @@
 <?php get_header(); ?>
 
-<div id="masthead" class="most-width overflow">
-	<h1><a href="<?= home_url(); ?>/notebook">The Notebook</a></h1>
-	<div class="aligncenter">
-		<a class="blue noteworthy button" href="<?= home_url(); ?>/category/news">
-			News
-			<div class="tooltip">
-				<div class="content">
-					<span class="serif">News and updates about Books@Work programs.</span>
-				</div>
-			</div>
-		</a>
-		<a class="blue noteworthy button" href="<?= home_url(); ?>/category/views">
-			Views
-			<div class="tooltip">
-				<div class="content">
-					<span class="serif">Perspectives from the Books@Work field: Professors, companies &amp; participants.</span>
-				</div>
-			</div>
-		</a>
-		<a class="blue noteworthy button" href="<?= home_url(); ?>/category/musings">
-			Musings
-			<div class="tooltip">
-				<div class="content">
-					<span class="serif">Reflections on a variety of interesting topics related to Books@Work.</span>
-				</div>
-			</div>
-		</a>
-	</div>
-</div>
+<section id="masthead" class="background-cover shorter" style="background-image: url(<?php the_field('blog_featured_image', 'Options'); ?>);"></section>
 
-	<div class="most-width">
-		<?php
-		$i = 0;
-		
-		while (have_posts()) : the_post(); 
-			if ($i === 1) {
-				echo '<section>';
-				echo '<div class="topic most-width">';
-			}
-			get_template_part('post-content');
-		if ($i === 0) {
-			echo '</div><!-- .most-width -->';
-		}
-		$i++;
-		endwhile;
-		?>
-	</div><!-- .most-width -->
-
-	<?php if (get_next_posts_link()) { 
-		echo '<div id="pagination" class="topic last">';
-		echo get_next_posts_link('Load More');
-		echo '</div>';
-	} ?>
+<div id="content">
 	
-</section>
+	<div class="full-width clearfix">
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		<div class="module">
+			<div class="content bg-white clearfix">
+				<div class="half">
+					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+					<div class="entry-meta">
+						<time class="purple big"><strong><?php $date = get_the_date('n.d.y'); echo $date; ?></strong></time>
+						<span class="caps">Share</span>
+						<a href="" class="icon-facebook"></a>
+						<a href="" class="icon-twitter"></a>
+						<a href="" class="icon-envelope"></a>
+						<span class="caps">Comments | <?php comments_number('0', '1', '%'); ?></span>
+					</div>
+				</div>
+				<div class="half last">
+					<div class="entry-content">
+						<?php if (get_field('featured_image')) { ?>
+						<a href="<?php the_permalink(); ?>" class="block" rel="bookmark">
+							<img src="<?php the_field('featured_image'); ?>">
+						</a>
+						<?php } 
+						the_excerpt(); ?>
+					</div>
+				</div>
+			</div>
+			<a class="content footer clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
+				<span class="alignright big">Read more</span>
+			</a>
+		</div>
+		<?php
+		endwhile;
+		endif;
+		?>
+		<div id="pagination" class="clearfix">
+			<?php if (get_next_posts_link()) { ?>
+			<div class="alignleft older">
+				<div class="arrow"></div>
+				<?php next_posts_link('Older'); ?>
+			</div>
+			<?php }
+			if (get_previous_posts_link()) { ?>
+			<div class="alignright newer">
+				<div class="arrow"></div>
+				<?= get_previous_posts_link('Newer'); ?>
+			</div>
+			<?php } ?>
+		</div>
+	</div>
+
+</div>
 
 <?php get_footer(); ?>

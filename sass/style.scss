@@ -21,9 +21,11 @@
 .tight { @include tight; }
 
 .lowercase { text-transform: none; }
-.uppercase { text-transform: uppercase; }
+.uppercase, .caps { text-transform: uppercase; }
 
 .big { font-size: 1.2em; }
+
+.block { display: block; }
 
 .abs {
 	position: absolute;
@@ -445,6 +447,11 @@ $from_blog: 154px;
 #masthead {
 	min-height: 530px !important;
 
+	&.shorter {
+		height: 280px !important;
+		min-height: 280px !important;
+	}
+
 	.module {
 		margin-top: 200px;
 		max-width: 500px;
@@ -457,17 +464,18 @@ $from_blog: 154px;
 }
 
 .scroll-down {
+	cursor: pointer;
 	padding: 10px 0 0 10px;
 	transition: 0.8s;
 	.preload & { opacity: 0; } // fade in on page load
 
 	aside {
 		float: left;
-		height: 40px;
-		top: 8px;
+		height: 30px;
+		top: 12px;
 		transform: rotate(-45deg);
 		transform-origin: 0 0;
-		width: 80px;
+		width: 60px;
 
 		&:before,
 		&:after {
@@ -479,14 +487,14 @@ $from_blog: 154px;
 			position: absolute;
 		}
 		&:before {
-			height: 40px;
+			height: 30px;
 			top: 0;
 			width: 4px;
 		}
 		&:after {
 			bottom: 0;
 			height: 4px;
-			width: 40px;
+			width: 30px;
 		}
 	}
 	p {
@@ -605,8 +613,51 @@ $from_blog: 154px;
 
 // ----- Services
 
-.page-template-pagesservices-php {
+#services-nav {
+	position: absolute;
+	right: 0;
+	top: 40%;
 
+	.tab {
+		background: $green;
+		color: $purple;
+		cursor: pointer;
+		font-size: 1.8em;
+		right: -210px;
+		margin-bottom: 0.5em;
+		padding: 0.4em 0.4em 0.1em 1.5em;
+		transition: 0.3s;
+		width: 250px;
+
+		&:hover {
+			right: 0;
+		}
+	}
+
+	.arrow {
+		height: 16px;
+		position: absolute;
+		left: 0.25em;
+		top: 0.5em;
+		transform: rotate(135deg);
+		width: 16px;
+
+		&:before, &:after {
+			background: $purple;
+			border-radius: 2px;
+			content: "";
+			display: block;
+			position: absolute;
+		}
+		&:before {
+			height: 100%;
+			width: 3px;
+		}
+		&:after {
+			height: 3px;
+			width: 100%;
+		}
+	}
 }
 
 // ----- Instructors
@@ -661,6 +712,107 @@ $from_blog: 154px;
 
 	.feature {
 		margin-bottom: 4px;
+	}
+}
+
+// ----- Blog
+
+.entry-title {
+	font-size: 2.5em;
+	margin-bottom: 0.25em;
+	a, a:visited {
+		color: $default;
+		text-decoration: none;
+		&:active, &:focus, &:hover {
+			color: $purple;
+		}
+	}
+}
+
+.entry-content {
+	& > *:first-child,
+	& > *:first-child > *:first-child,
+	& > *:first-child > *:first-child > *:first-child {
+		margin-top: 0;
+	}
+}
+
+.entry-meta {
+	margin-bottom: 1em;
+
+	time { margin-right: 0.5em;	}
+
+	a, a:visited {
+		color: $purple;
+		font-size: 1.15em;
+		text-decoration: none;
+
+		&:active, &:focus, &:hover {
+			color: $lavender;
+		}
+	}
+}
+
+#pagination {
+	margin-top: 3em;
+
+	a, a:visited {
+		background: $turquoise;
+		color: #fff;
+		display: inline-block;
+		@include brandon;
+		font-size: 1.8em;
+		padding: 0.6em 0.6em 0.3em;
+		text-decoration: none;
+		z-index: 1;
+
+		&:active, &:focus, &:hover {
+			background: $purple;
+		}
+	}
+
+	.arrow {
+		height: 20px;
+		position: absolute;
+		right: 1.2em;
+		top: 1.2em;
+		transform: rotate(135deg);
+		width: 20px;
+		z-index: 2;
+
+		&:before,
+		&:after {
+			background: #fff;
+			border-radius: 2px;
+			content: "";
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			height: 100%;
+			width: 4px;
+		}
+		
+		&:after {
+			height: 4px;
+			width: 100%;
+		}
+	}
+
+	.older {
+		a {
+			padding-left: 2.5em;
+		}
+		.arrow {
+			left: 1.2em;
+			transform: rotate(-45deg);
+		}
+	}
+	.newer {
+		a {
+			padding-right: 2.5em;
+		}
 	}
 }
 

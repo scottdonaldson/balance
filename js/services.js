@@ -8,6 +8,7 @@
 		}
 		return initialize( main, 0 );
 	}
+
 	$(document).ready(function() {
 		var main = $('main');
 		init( main, location.hash.slice(1) );
@@ -17,13 +18,15 @@
 		});
 	});
 
-	function initialize(main, index) {
+	function initialize( main, index ) {
 		// Deactivate
 		$('html, body').animate({
 			scrollTop: 0
 		}, 800);
 		main.fadeOut(function(){
 			main.find('#content .module').remove();
+
+			displayTabs( main, index );
 
 			var service = BALANCE.services[index];
 
@@ -61,6 +64,40 @@
 		});
 	}
 
-	
+	function displayTabs( main, index ) {
+		setTimeout(function(){
+			$('.tab').remove();
+
+			var tabs = [];
+			for (var i = 0; i < BALANCE.services.length; i++) {
+				if ( i !== index ) {
+					tabs.push( BALANCE.services[i] );
+				}
+			}
+			
+			for (var i = 0; i < tabs.length; i++) {
+				var tab = $('<div class="tab brandon" style="margin-right: -50px">'),
+					arrow = $('<div class="arrow">');
+				tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
+				tab.prependTo( main.find('#services-nav') ).animate({
+					marginRight: 0
+				});
+			}
+		}, 800);
+	}
+
+	$('body').on('click', '.tab', function() {
+		var text = $(this).text();
+		for (var i = 0; i < BALANCE.services.length; i++) {
+			if ( text === BALANCE.services[i].name.toLowerCase() ) {
+				$('.tab').animate({ 
+					right: -300
+				}, 100, function() {
+					initialize( $('main'), i );
+				});
+				break;
+			}
+		}
+	});
 
 }(jQuery));
