@@ -45,6 +45,8 @@
 					.append('<div class="scroll-up"><aside /></div>')
 					.prependTo( module );
 
+				main.find('#masthead .module').append('<div class="class-preview">' + service.classes[i].classes_name + '<\/div>');
+
 				for (var j = 0; j < service.classes[i]['class'].length; j++) {
 					var thisClass = service.classes[i]['class'][j];
 
@@ -59,6 +61,9 @@
 
 				main.find('#page-intro').next().append( module );
 			}
+
+			main.find('#masthead .module').append('<div class="scroll-down"><aside></aside><p>Scroll down for class descriptions &amp; pricing</p></div>');
+			BALANCE.posScrollDown();
 
 			main.fadeIn();
 		});

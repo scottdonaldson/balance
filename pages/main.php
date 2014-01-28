@@ -23,7 +23,7 @@ the_post(); ?>
 <section id="yoga" class="background-cover" style="background-image: url(<?= get_bloginfo('template_url'); ?>/images/home/yoga.jpg); z-index: 4;">
 	<div class="full-width">
 		<div class="height-100">
-			<div class="module bg-white abs bottom right">
+			<div class="module bg-white bottom right">
 				<div class="content">
 					<h2>Yoga</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem sed aliquid reiciendis error veniam velit aspernatur quaerat alias necessitatibus nesciunt ex fuga nemo explicabo? Voluptatem.</p>

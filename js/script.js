@@ -82,14 +82,14 @@
 
 	// ----- "Scroll down" paragraph (if only on one line)
 
-	var p = $('.scroll-down p');
-	function posScrollDownP() {
+	BALANCE.posScrollDown = function() {
+		var p = $('.scroll-down p');
 		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 );
 	}
-	win.on('load resize', posScrollDownP);
+	win.on('load resize', BALANCE.posScrollDown);
 
 	// ----- "Scroll down": click on it to scroll to #content
-	p.parent().click(function() {
+	body.on('click', '.scroll-down', function() {
 		$('html, body').animate({
 			scrollTop: $('#content').position().top
 		}, 800);
