@@ -486,6 +486,7 @@ $break_home_updates_small: 400px;
 
 // ----- Pages
 
+$break_masthead: 800px;
 #masthead {
 	min-height: 530px !important;
 
@@ -498,10 +499,24 @@ $break_home_updates_small: 400px;
 		margin-top: 200px;
 		max-width: 500px;
 		width: 50%;
+
+		@media screen and (max-width: $break_masthead) {
+			margin-top: 0;
+			max-width: none;
+			top: 100px;
+			width: 100%;
+		}
 	}
 
 	p {
 		font-size: 1.2em;
+	}
+
+	@media screen and (max-width: $break_masthead) {
+		height: auto !important;
+		margin-bottom: 100px;
+		padding-top: 150px;
+		min-height: 0 !important;
 	}
 }
 
@@ -622,9 +637,16 @@ $break_home_updates_small: 400px;
 
 #buttons {
 	margin-bottom: 5em;
+	@media screen and (max-width: 1000px) {
+		margin-bottom: 3.5em;
+	}
+	@media screen and (max-width: 700px) {
+		margin-bottom: 2em;
+	}
 
 	a {
 		@include brandon;
+		display: block;
 		font-size: 1.3em;
 		padding: 1em 1em 0.8em;
 
@@ -638,6 +660,16 @@ $break_home_updates_small: 400px;
 			margin-right: 0.2em;
 			top: 0.15em;
 		}
+	}
+
+	@media screen and (max-width: $break_half) {
+		.first {
+			margin-bottom: 1em;
+		}
+	}
+
+	& + .module {
+		margin-top: 0 !important;
 	}
 }
 
@@ -659,6 +691,11 @@ $break_home_updates_small: 400px;
 		&:active, &:focus, &:hover {
 			background: $green;
 		}
+	}
+
+	@media screen and (max-width: 400px) {
+		margin-left: 0;
+		width: 100%;
 	}
 }
 
@@ -754,10 +791,16 @@ $break_home_updates_small: 400px;
 		h3 { 
 			color: $purple;
 			margin: 0;
+			@media screen and (max-width: 800px) {
+				font-size: 1em;
+			}
 		}
 
 		span {
 			color: #fff;
+			@media screen and (max-width: 800px) {
+				font-size: 0.9em;
+			}
 		}
 	}
 

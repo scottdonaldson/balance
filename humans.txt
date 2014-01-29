@@ -11,5 +11,5 @@ Twitter: @scottpdonaldson
 
 /* SITE */
 
-Last update: October 2013
+Last update: February 2014
 Standards: HTML5, CSS3

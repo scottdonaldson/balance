@@ -31,8 +31,12 @@ the_post(); ?>
 	<div class="full-width clearfix">
 
 		<div id="buttons" class="clearfix">
-			<a class="half first bg-turquoise white"><span class="icon-file"></span> Something here</a>
-			<a class="half last bg-turquoise white"><span class="icon-file"></span> Something here</a>
+			<div class="half first">
+				<a class="bg-turquoise white"><span class="icon-file"></span> Something here</a>
+			</div>
+			<div class="half last">
+				<a class="bg-turquoise white"><span class="icon-file"></span> Something here</a>
+			</div>
 		</div>
 
 		<div class="module">
