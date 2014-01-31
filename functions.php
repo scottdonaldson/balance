@@ -17,6 +17,32 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 function new_excerpt_more( $more ) { return '...'; }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+// Given a string, trim any leading zeros (helpful for dates)
+function trim_zeros($string) {
+  return substr($string, 0, 1) === '0' ? trim_zeros(substr($string, 1)) : $string;
+}
+
+// Trim strings by number of characters but only return full words...
+function limit_text($text, $len) {
+  if (strlen($text) <= $len) {
+      return $text;
+  }
+  $text_words = explode(' ', $text);
+  $out = null;
+
+  foreach ($text_words as $word) {
+      if ((strlen($word) > $len) && $out == null) {
+
+          return substr($word, 0, $len) . '...';
+      }
+      if ((strlen($out) + strlen($word)) > $len) {
+          return $out . '...';
+      }
+      $out.=' ' . $word;
+  }
+  return $out;
+}
+
 // Remove some stuff from head
 remove_action('wp_head', 'wp_generator');
 

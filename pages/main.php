@@ -23,7 +23,7 @@ the_post(); ?>
 <section id="yoga" class="background-cover" style="background-image: url(<?= get_bloginfo('template_url'); ?>/images/home/yoga.jpg); z-index: 4;">
 	<div class="full-width">
 		<div class="height-100">
-			<div class="module bg-white bottom right">
+			<div class="module bg-white abs bottom right">
 				<div class="content">
 					<h2>Yoga</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem sed aliquid reiciendis error veniam velit aspernatur quaerat alias necessitatibus nesciunt ex fuga nemo explicabo? Voluptatem.</p>
@@ -68,50 +68,94 @@ the_post(); ?>
 		<section>
 			<div id="from-blog">
 				<span class="uppercase green">From the blog</span>
-				<a href="#"><h2>Title of latest blog post</h2></a>
+				<?php
+				$blog_query = new WP_Query(array(
+					'posts_per_page' => 1
+					)
+				);
+				while ( $blog_query->have_posts() ) : $blog_query->the_post(); ?>
+					<a href="<?php the_permalink(); ?>" rel="bookmark"><h2><?= limit_text(get_the_title(), 18); ?></h2></a>
+				<?php endwhile; wp_reset_postdata(); ?>
 			</div>
-						
-			<article class="post clearfix">
-				<div class="header">
-					<time>
-						<div class="same-height" data-group="1">Sept&nbsp;6-9</div>
-					</time>
-					<div class="title">
-						<div class="same-height" data-group="1">Title of latest announcement or promotion</div>
-					</div>
-				</div>
-				<div class="summary">
-					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque debitis impedit praesentium quae maiores et quia delectus minima culpa non eius reprehenderit itaque quis tempore inventore eveniet at unde blanditiis sit exercitationem ipsum quas iure!</div>
-				</div>
-			</article>
+		
+			<?php
+			$months = array(
+				'01' => 'Jan', 
+				'02' => 'Feb', 
+				'03' => 'Mar', 
+				'04' => 'Apr', 
+				'05' => 'May', 
+				'06' => 'Jun', 
+				'07' => 'Jul', 
+				'08' => 'Aug', 
+				'09' => 'Sep', 
+				'10' => 'Oct', 
+				'11' => 'Nov', 
+				'12' => 'Dec'
+			);
+			// Loop through the updates and specials
+			$rows = get_field('updates_and_specials');
+			foreach ($rows as $row) {
 
-			<article class="post clearfix">
-				<div class="header">
-					<time>
-						<div class="same-height" data-group="2">Oct&nbsp;12</div>
-					</time>
-					<div class="title">
-						<div class="same-height" data-group="2">Title of latest announcement or promotion</div>
-					</div>
-				</div>
-				<div class="summary">
-					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto rem alias expedita nisi adipisci quo numquam distinctio voluptas voluptatem repellat quod quam delectus fugit assumenda repellendus recusandae dignissimos provident ex. Minima est ab distinctio blanditiis.</div>
-				</div>
-			</article>
+				// Dates to be formatted and output
+				$start_date = $row['start_date'];
+				$end_date = $row['end_date'];
 
-			<article class="post clearfix">
-				<div class="header">
-					<time>
-						<div class="same-height" data-group="3">Oct&nbsp;31 - Nov&nbsp;21</div>
-					</time>
-					<div class="title">
-						<div class="same-height" data-group="3">Title of latest announcement or promotion</div>
-					</div>
-				</div>
-				<div class="summary">
-					<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo earum iusto officia asperiores molestiae eius laborum cumque. Culpa ducimus soluta veniam harum dignissimos praesentium autem qui iste tenetur fugit aspernatur nemo ad eveniet repellat magnam!</div>
-				</div>
-			</article>
+				// Only display if this is an upcoming or ongoing update or special
+				if (date('Ymd') <= $start_date || ($end_date && date('Ymd') <= $end_date)) {
+
+					$name = $row['name'];
+					$featured_image = $row['featured_image'];
+					$description = $row['description'];
+
+					// Format the output
+					// If the month in the start date starts with a 0, trim it for the output
+					$output_date = $months[substr($start_date, 4, 2)];
+
+					// space
+					$output_date .= ' ';
+					// day
+					$output_date .= trim_zeros(substr($start_date, 6, 2));
+
+					// if we're in a range of dates
+					if ($end_date) {
+						// Check if it ends in the same month
+						if ( substr($start_date, 4, 2) === substr($end_date, 4, 2) ) {
+							$output_date .= '-';
+
+						// If not in the same month, include end month
+						} else {
+							$output_date .= ' - ';
+							$output_date .= $months[substr($end_date, 4, 2)];
+							$output_date .= ' ';
+						}
+						$output_date .= trim_zeros(substr($end_date, 6, 2));
+					}
+					?>	
+					<article class="post clearfix">
+						<div class="header">
+							<time>
+								<div class="same-height" data-group="1"><?= $output_date; ?></div>
+							</time>
+							<div class="title">
+								<div class="same-height" data-group="1"><?= $name; ?></div>
+							</div>
+						</div>
+						<?php if ($featured_image || $description) { ?>
+						<div class="summary">
+							<div class="content">
+								<?php if ($featured_image) { ?>
+									<img src="<?= $featured_image; ?>">
+								<?php } ?>
+								<?= $description; ?>
+							</div>
+						</div>
+						<?php } ?>
+					</article>
+				<?php } 
+			}
+			?>
+
 		</section>
 	</div>
 </div>
