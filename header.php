@@ -27,7 +27,7 @@
 <body <?php body_class('preload'); ?>>
 
     <nav id="small-screen-menu">
-        <ul>
+        <ul class="content">
             <?php wp_nav_menu(array(
                 'theme_location' => 'primary',
                 'menu_class' => '',
@@ -40,7 +40,7 @@
             <li>
                 <a href="#">Client Login</a>
             </li>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="250" height="250" frameborder="0" style="border:0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="100%" height="250" frameborder="0" style="border:0"></iframe>
         </ul>
     </nav>
 

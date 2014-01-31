@@ -236,10 +236,28 @@ header {
 
 	@media screen and (max-width: $small_screen_menu) {
 		display: block;
+		padding: 40px 1em 0;
 		position: absolute;
 		left: 100%;
+		text-align: center;
 		top: 0;
 		width: 75%;
+
+		ul {
+			@include brandon;
+			font-size: 20px;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		a, a:visited {
+			color: $default;
+			display: block;
+			padding: 0.5em 2em;
+			text-decoration: none;
+			&:active, &:focus, &:hover { color: $purple; }
+		}
 	}
 }
 
@@ -335,6 +353,11 @@ header {
 
 $break_home_module: 900px;
 .home {
+	main {
+		@media screen and (max-width: $break_home_module) {
+			padding-top: 46px;
+		}
+	}
 	main > section {
 		background-color: $default;
 		opacity: 0.5;
@@ -388,14 +411,23 @@ $break_home_updates_small: 400px;
 #updates-specials {
 	background: $green;
 	padding: 120px 0 60px;
+
 	@media screen and (max-width: $break_home_module) {
 		padding-top: 20px;
 	}
 
 	section {
+		min-height: $from_blog;
 		padding-right: $from_blog;
 		@media screen and (max-width: $break_home_updates_small) {
 			padding-right: 0;
+		}
+		p:first-child,
+		img + p {
+			margin-top: 0;
+		}
+		p:last-child {
+			margin-bottom: 0;
 		}
 	}
 
