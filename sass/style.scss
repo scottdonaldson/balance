@@ -47,11 +47,11 @@
 
 html {
 	background: $transparent_green;
-	overflow-x: hidden;
 }
 
 body { 
 	color: $default;
+	overflow-x: hidden;
 }
 
 a {
@@ -113,6 +113,10 @@ header {
 			background: $lavender;
 		}
 	}
+
+	@media screen and (max-width: $small_screen_menu) {
+		background: $purple;
+	}
 }
 
 #logo, #menu {
@@ -127,6 +131,9 @@ header {
 	padding-top: 0.6em;
 	img {
 		width: 180px;
+	}
+	@media screen and (max-width: $small_screen_menu) {
+		border-bottom: 0;
 	}
 }
 
@@ -191,7 +198,7 @@ header {
 	padding: 4%;
 	text-align: left;
 
-	address, #tel {
+	address, .tel {
 		font-size: 1.2em;
 		margin: 1em 0;
 		text-transform: none;
@@ -208,6 +215,7 @@ header {
 	display: none;
 
 	@media screen and (max-width: $small_screen_menu) {
+		background: $lavender;
 		display: block !important;
 		cursor: pointer;
 		float: right;
@@ -222,7 +230,7 @@ header {
 		transition: 0.2s;
 		width: 20px;
 	}
-	&:active .stripe { background: $lavender; }
+	&:active .stripe { background: $green; }
 }
 
 #page {
@@ -368,6 +376,7 @@ $break_home_module: 900px;
 			background-size: 100% auto !important;
 			background-repeat: no-repeat;
 			background-position: 0 0;
+			margin-bottom: 20px;
 			padding-top: 25%;
 		}
 
@@ -422,13 +431,9 @@ $break_home_updates_small: 400px;
 		@media screen and (max-width: $break_home_updates_small) {
 			padding-right: 0;
 		}
-		p:first-child,
-		img + p {
-			margin-top: 0;
-		}
-		p:last-child {
-			margin-bottom: 0;
-		}
+		img { display: block; width: 100%; }
+		p:first-child { margin-top: 0; }
+		p:last-child { margin-bottom: 0; }
 	}
 
 	.post {
@@ -538,10 +543,19 @@ $break_masthead: 800px;
 			top: 100px;
 			width: 100%;
 		}
+		h1, h2, h3 {
+			font-size: 32px;
+			@media screen and (max-width: $break_masthead) {
+				font-size: 26px;
+			}
+		}
 	}
 
 	p {
 		font-size: 1.2em;
+		@media screen and (max-width: $break_masthead) {
+			font-size: 1em; 
+		}
 	}
 
 	@media screen and (max-width: $break_masthead) {
@@ -743,13 +757,13 @@ $break_masthead: 800px;
 		color: $purple;
 		cursor: pointer;
 		font-size: 1.8em;
-		right: -210px;
 		margin-bottom: 0.5em;
 		padding: 0.4em 0.4em 0.1em 1.5em;
+		right: -210px;
 		transition: 0.3s;
 		width: 250px;
 
-		&:hover {
+		&.hover {
 			right: 0;
 		}
 	}
@@ -969,6 +983,7 @@ $break_masthead: 800px;
 
 // ----- Footer
 
+$break_footer: 900px;
 footer {
 	padding: 20px 0 5px;
 	a, a:visited {
@@ -981,6 +996,13 @@ footer {
 }
 	#copyright {
 		font-size: 0.9em;
+		line-height: 1.5;
+
+		@media screen and (max-width: $break_footer) {
+			float: none;
+			margin: 0 auto;
+			text-align: center;
+		}
 	}
 
 	#ext-links {
@@ -988,6 +1010,7 @@ footer {
 
 		.icon {
 			font-size: 1.4em;
+			margin-right: 3px;
 			text-decoration: none !important; // don't underline on hover
 			top: 0.2em;
 		}
@@ -1000,6 +1023,17 @@ footer {
 				span {
 					text-decoration: underline;
 				}
+			}
+		}
+
+		@media screen and (max-width: $break_footer) {
+			float: none;
+			margin: 0 auto;
+			a {
+				display: block;
+				margin: 0 auto;
+				padding: 3px;
+				text-align: center;
 			}
 		}
 	}

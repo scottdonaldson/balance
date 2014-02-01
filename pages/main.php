@@ -74,7 +74,7 @@ the_post(); ?>
 					)
 				);
 				while ( $blog_query->have_posts() ) : $blog_query->the_post(); ?>
-					<a href="<?php the_permalink(); ?>" rel="bookmark"><h2><?= limit_text(get_the_title(), 18); ?></h2></a>
+					<a href="#" rel="bookmark"><h2><?= limit_text(get_the_title(), 18); ?></h2></a>
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div>
 		

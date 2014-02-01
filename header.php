@@ -40,7 +40,12 @@
             <li>
                 <a href="#">Client Login</a>
             </li>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x89b7c967244b8455%3A0x503d84c718a16f38!2s4719+Rosedale+Ave%2C+Bethesda%2C+MD+20814!5e0!3m2!1sen!2sus!4v1387505517373" width="100%" height="250" frameborder="0" style="border:0"></iframe>
+            <hr>
+            <div class="aligncenter"><h3>Find Us</h3>
+                <address class="delicious lowercase">4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
+                <span class="delicious lowercase tel">T. <tel></tel>301.986.1730</span><br>
+                <a href="#">Get Google Directions</a>
+            </div>
         </ul>
     </nav>
 
@@ -60,7 +65,7 @@
                     <a class="content footer" href="#">Get Google Directions</a>
                 </div>
                 <address>4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
-                <span id="tel">T. <tel></tel>301.986.1730</span>
+                <span class="tel">T. <tel></tel>301.986.1730</span>
 
                 <h3>Parking</h3>
                 <p class="lowercase delicious">Etiam semper lorem ac risus lacinia accumsan. Etiam rutrum magna id semper dignissim. Sed commodo elit sem. Vivamus est lorem, consectetur at egestas vitae, mattis a ipsum.</p>

@@ -25,6 +25,7 @@
 		}, 800);
 		main.fadeOut(function(){
 			main.find('#content .module').remove();
+			main.find('.class-preview').remove();
 
 			displayTabs( main, index );
 
@@ -37,7 +38,7 @@
 			main.find('#page-intro p').html( service.intro_paragraph_text );
 
 			for (var i = 0; i < service.classes.length; i++) {
-				var module = $('<div class="module">'),
+				var module = $('<div class="module" data-target="'+ service.classes[i].classes_name +'">'),
 					heading = $('<div class="content heading bg-purple">'),
 					content = $('<div class="content bg-white">');
 
@@ -45,7 +46,7 @@
 					.append('<div class="scroll-up"><aside /></div>')
 					.prependTo( module );
 
-				main.find('#masthead .module').append('<div class="class-preview">' + service.classes[i].classes_name + '<\/div>');
+				main.find('#masthead .module').append('<div class="class-preview" data-scrollto="'+ service.classes[i].classes_name +'">' + service.classes[i].classes_name + '<\/div>');
 
 				for (var j = 0; j < service.classes[i]['class'].length; j++) {
 					var thisClass = service.classes[i]['class'][j];
@@ -62,33 +63,43 @@
 				main.find('#page-intro').next().append( module );
 			}
 
-			main.find('#masthead .module').append('<div class="scroll-down"><aside></aside><p>Scroll down for class descriptions &amp; pricing</p></div>');
-			BALANCE.posScrollDown();
+			if (main.find('#masthead .scroll-down').length === 0) {
+				main.find('#masthead .module').append('<div class="scroll-down"><aside></aside><p>Scroll down for class descriptions &amp; pricing</p></div>');
+				BALANCE.posScrollDown();
+			} else {
+				main.find('#masthead .scroll-down').appendTo('#masthead .module');
+			}
 
 			main.fadeIn();
 		});
 	}
 
 	function displayTabs( main, index ) {
-		setTimeout(function(){
-			$('.tab').remove();
 
-			var tabs = [];
-			for (var i = 0; i < BALANCE.services.length; i++) {
-				if ( i !== index ) {
-					tabs.push( BALANCE.services[i] );
-				}
+		$('.tab').remove();
+
+		var tabs = [];
+		for (var i = 0; i < BALANCE.services.length; i++) {
+			if ( i !== index ) {
+				tabs.push( BALANCE.services[i] );
 			}
-			
-			for (var i = 0; i < tabs.length; i++) {
-				var tab = $('<div class="tab brandon" style="margin-right: -50px">'),
-					arrow = $('<div class="arrow">');
-				tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
-				tab.prependTo( main.find('#services-nav') ).animate({
-					marginRight: 0
-				});
-			}
-		}, 800);
+		}
+		
+		for (var i = 0; i < tabs.length; i++) {
+			var tab = $('<div class="tab brandon hover">'),
+				arrow = $('<div class="arrow">');
+
+			tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
+			tab.prependTo( main.find('#services-nav') );
+			tab.mouseover(function(){
+				$(this).addClass('hover');
+			}).mouseleave(function(){
+				$(this).removeClass('hover');
+			});
+		}
+		setTimeout(function(){
+			$('.tab').removeClass('hover');
+		}, 1000);
 	}
 
 	$('body').on('click', '.tab', function() {

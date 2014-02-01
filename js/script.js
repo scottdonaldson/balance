@@ -85,7 +85,7 @@
 	BALANCE.posScrollDown = function() {
 		var p = $('.scroll-down p');
 		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 );
-	}
+	};
 	win.on('load resize', BALANCE.posScrollDown);
 
 	// ----- "Scroll down": click on it to scroll to #content
@@ -105,6 +105,13 @@
 		});
 	});
 
+	// ----- Click on anything with a data-scrollto attribute to scroll to the matching data-target
+	body.on('click', '[data-scrollto]', function(){
+		$('html, body').animate({
+			scrollTop: $('[data-target="' + this.getAttribute('data-scrollto') + '"]').offset().top
+		}, 800);
+	});
+
 	// ----- Instructors
 	
 	var instructors = $('.instructor');
@@ -117,6 +124,7 @@
 			$this.removeClass('active');
 			$this.parent().next().slideUp();
 		}
+		$this.closest('.instructors').siblings('.instructors').find('.clearfix.content').slideUp();
 	});
 
 	// ----- Studio

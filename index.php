@@ -9,7 +9,7 @@
 		<div class="module">
 			<div class="content bg-white clearfix">
 				<div class="half">
-					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+					<h2 class="entry-title"><a href="#" rel="bookmark"><?php the_title(); ?></a></h2>
 					<div class="entry-meta">
 						<time class="purple big"><strong><?php $date = get_the_date('n.d.y'); echo $date; ?></strong></time>
 						<span class="caps">Share</span>
@@ -22,7 +22,7 @@
 				<div class="half last">
 					<div class="entry-content">
 						<?php if (get_field('featured_image')) { ?>
-						<a href="<?php the_permalink(); ?>" class="block" rel="bookmark">
+						<a href="#" class="block" rel="bookmark">
 							<img src="<?php the_field('featured_image'); ?>">
 						</a>
 						<?php } 
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 			</div>
-			<a class="content footer clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
+			<a class="content footer clearfix" href="#" rel="bookmark">
 				<span class="alignright big">Read more</span>
 			</a>
 		</div>
