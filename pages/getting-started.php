@@ -40,7 +40,7 @@ the_post(); ?>
 		</div>
 
 		<div class="module">
-			<div class="content bg-purple heading">
+			<div class="content bg-purple heading with-scroll-up">
 				<h2>Getting Started with Pilates</h2>
 				<div class="scroll-up"><aside></aside></div>
 			</div>

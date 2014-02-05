@@ -8,6 +8,13 @@ function output_services() { ?>
 <?php } 
 add_action('wp_head', 'output_services');
 
+// Build in a little API for other pages to grab services
+if ($_GET['api'] === 'true') {
+	header('Content-type: application/json');
+	echo json_encode(get_field('type'));
+	return;
+}
+
 get_header();
 the_post();
 ?>

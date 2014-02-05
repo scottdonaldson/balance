@@ -14,10 +14,7 @@ the_post();
 					<h2 class="entry-title"><?php the_title(); ?></h2>
 					<div class="entry-meta">
 						<time class="purple big"><strong><?php $date = get_the_date('n.d.y'); echo $date; ?></strong></time>
-						<span class="caps">Share</span>
-						<a href="" class="icon-facebook"></a>
-						<a href="" class="icon-twitter"></a>
-						<a href="" class="icon-envelope"></a>
+						<?php get_template_part('share'); ?>
 						<span class="caps">Comments | <?php comments_number('0', '1', '%'); ?></span>
 					</div>
 				</div>

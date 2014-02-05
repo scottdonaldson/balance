@@ -2,7 +2,8 @@
 
 	var win = $(window),
 		body = $('body'),
-		page = $('#page');
+		page = $('#page'),
+		main = $('main');
 
 	// ----- Nav menu
 
@@ -59,9 +60,8 @@
 
 	// ----- Home page scrolling
 
-	var homeSections = $('.home main > section');
 	function lightUpSection() {
-		homeSections.each(function(){
+		$('.home main > section').each(function(){
 			var $this = $(this);
 			if ( win.scrollTop() - $this.offset().top > -150 && win.scrollTop() - $this.offset().top <= $this.outerHeight() - 100 ) {
 				$this.addClass('active');
@@ -80,13 +80,57 @@
 		$(this).toggleClass('active').next().slideToggle();
 	});
 
+	// ----- Home page -- insert <section>s after API call to Services page
+	if ( body.hasClass('home') ) {
+
+		// Given some data and a templated <section>, insert the data into the <section>
+		function populateSection( data, section, i ) {
+			section.css({
+				backgroundImage: 'url(' + data.photo_main + ')',
+				zIndex: 100 - i
+			});
+			section.find('h2').html( data.name );
+			section.find('p').html( data.intro_title_text );
+			section.find('a').attr('href', section.find('a').attr('href') + '#' + BALANCE.slugify( data.name ) );
+			if ( i % 2 === 1 ) {
+				section.find('.module').addClass('right');
+			}
+			section.insertBefore( '#updates-specials' ).show();
+			if ( i === BALANCE.services.length - 1 ) {
+				body.removeClass('preload');
+			}
+		}
+
+		// Insert the sections -- use the existing <section> as a template,
+		// and clone it for subsequent ones
+		function insertSections() {
+			var template = $('[data-template="services"]');
+			if ( BALANCE.services ) {
+				for (var i = 0; i < BALANCE.services.length; i++) {
+					populateSection( BALANCE.services[i], template.clone(), i );
+				}
+			} else {
+				setTimeout(insertSections, 10);
+			}
+		}
+
+		// Go go go!
+		insertSections();
+	}
+
 	// ----- "Scroll down" paragraph (if only on one line)
 
+	var p = $('.scroll-down p');
 	BALANCE.posScrollDown = function() {
-		var p = $('.scroll-down p');
 		p.css('top', p.height() < 44 ? 0.5 * ( 44 - p.height() ) : 0 );
 	};
 	win.on('load resize', BALANCE.posScrollDown);
+	// If we're on a page with this .scroll-down, we must remove preload
+	if ( p.length > 0 ) {
+		win.load(function(){
+			body.removeClass('preload');
+		});
+	}
 
 	// ----- "Scroll down": click on it to scroll to #content
 	body.on('click', '.scroll-down', function() {
@@ -132,12 +176,6 @@
 	var features = $('.page-template-pagesstudio-php .feature');
 	features.find('.heading, img').click(function(){
 		$(this).parent().find('.description').slideToggle();
-	});
-
-	// ----- Remove the preload class
-
-	win.load(function(){
-		$('.preload').removeClass('preload');
 	});
 
 }(jQuery));

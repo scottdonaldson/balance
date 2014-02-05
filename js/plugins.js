@@ -35,6 +35,11 @@ BALANCE.makeSameHeight = function() {
 $(document).ready(BALANCE.makeSameHeight);
 $(window).on('load resize', BALANCE.makeSameHeight);
 
+// ----- Slugify strings (a la WordPress) for Services page
+BALANCE.slugify = function(string) {
+    return string.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase().replace(/--+/g, '-')
+}
+
 // popup links
 $('body').on('click', '.popup', function(e){
   e.preventDefault();
