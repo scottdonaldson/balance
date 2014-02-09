@@ -35,6 +35,7 @@
 
 .background-cover {
 	background-position: 50% 50%;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
 
@@ -366,16 +367,19 @@ $break_home_module: 900px;
 		opacity: 0;
 		transition: 0.2s opacity;
 	}
+
 	main {
 		@media screen and (max-width: $break_home_module) {
-			padding-top: 46px;
+			padding-top: 46px; // height of header
 		}
 	}
+	
 	main > section {
 		background-color: $default;
 		opacity: 0.5;
 		padding-top: 30%;
 		transition: 0.25s;
+
 		@media screen and (max-width: $break_home_module) {
 			background: $green;
 			background-size: 100% auto !important;
@@ -527,6 +531,11 @@ $break_home_updates_small: 400px;
 // ----- Pages
 
 $break_masthead: 800px;
+main {
+	@media screen and (max-width: $break_masthead) {
+		padding-top: 46px; // height of header
+	}
+}
 #masthead {
 	min-height: 530px !important;
 
@@ -541,9 +550,8 @@ $break_masthead: 800px;
 		width: 50%;
 
 		@media screen and (max-width: $break_masthead) {
-			margin-top: 0;
+			margin-top: 250px;
 			max-width: none;
-			top: 100px;
 			width: 100%;
 		}
 		h1, h2, h3 {
@@ -562,9 +570,9 @@ $break_masthead: 800px;
 	}
 
 	@media screen and (max-width: $break_masthead) {
+		background-position: 50% 0 !important;
+		background-size: fill;
 		height: auto !important;
-		margin-bottom: 100px;
-		padding-top: 150px;
 		min-height: 0 !important;
 
 		.blog &,
@@ -650,7 +658,13 @@ $break_masthead: 800px;
 		h2, p {
 			width: 100%;
 		}
-		h2 { margin-bottom: 0.5em; }
+		h2 { 
+			font-size: 1.5em;
+			margin-bottom: 0.5em; 
+		}
+		p {
+			font-size: 0.9em;
+		}
 	}
 }
 
@@ -776,11 +790,18 @@ $break_masthead: 800px;
 		margin-bottom: 0.5em;
 		padding: 0.4em 0.4em 0.1em 1.5em;
 		right: -210px;
+		top: 0; // override brandon fix
 		transition: 0.3s;
 		width: 250px;
 
 		&.hover {
 			right: 0;
+		}
+
+		@media screen and (max-width: $break_masthead) {
+			font-size: 1.2em;
+			margin: 0;
+			padding: 0.4em 0.4em 0.1em;
 		}
 	}
 
@@ -805,6 +826,41 @@ $break_masthead: 800px;
 		}
 		&:after {
 			height: 3px;
+			width: 100%;
+		}
+
+		@media screen and (max-width: $break_masthead) {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: $break_masthead) {
+		text-align: center;
+		top: 0;
+
+		.tab { 
+			margin-top: -1.65em;
+			right: 0 !important;
+		}
+
+		&:hover {
+			.tab {
+				margin-top: 0;
+			}
+		}
+
+		&:before {
+			background: $green;
+			color: $purple;
+			content: "More Services \25BE";
+			cursor: pointer;
+			display: block;
+			@include brandon;
+			font-size: 1.2em;
+			left: 0;
+			padding: 0.4em 0.4em 0.1em;
+			position: absolute;
+			top: 0;
 			width: 100%;
 		}
 	}

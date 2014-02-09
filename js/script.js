@@ -81,40 +81,40 @@
 	});
 
 	// ----- Home page -- insert <section>s after API call to Services page
+
+	// Given some data and a templated <section>, insert the data into the <section>
+	function populateSection( data, section, i ) {
+		section.css({
+			backgroundImage: 'url(' + data.photo_main + ')',
+			zIndex: 100 - i
+		});
+		section.find('h2').html( data.name );
+		section.find('p').html( data.intro_title_text );
+		section.find('a').attr('href', section.find('a').attr('href') + '#' + BALANCE.slugify( data.name ) );
+		if ( i % 2 === 1 ) {
+			section.find('.module').addClass('right');
+		}
+		section.insertBefore( '#updates-specials' ).show();
+		if ( i === BALANCE.services.length - 1 ) {
+			body.removeClass('preload');
+		}
+	}
+
+	// Insert the sections -- use the existing <section> as a template,
+	// and clone it for subsequent ones
+	function insertSections() {
+		var template = $('[data-template="services"]');
+		if ( BALANCE.services ) {
+			for (var i = 0; i < BALANCE.services.length; i++) {
+				populateSection( BALANCE.services[i], template.clone(), i );
+			}
+		} else {
+			setTimeout(insertSections, 10);
+		}
+	}
+
+	// Go go go!
 	if ( body.hasClass('home') ) {
-
-		// Given some data and a templated <section>, insert the data into the <section>
-		function populateSection( data, section, i ) {
-			section.css({
-				backgroundImage: 'url(' + data.photo_main + ')',
-				zIndex: 100 - i
-			});
-			section.find('h2').html( data.name );
-			section.find('p').html( data.intro_title_text );
-			section.find('a').attr('href', section.find('a').attr('href') + '#' + BALANCE.slugify( data.name ) );
-			if ( i % 2 === 1 ) {
-				section.find('.module').addClass('right');
-			}
-			section.insertBefore( '#updates-specials' ).show();
-			if ( i === BALANCE.services.length - 1 ) {
-				body.removeClass('preload');
-			}
-		}
-
-		// Insert the sections -- use the existing <section> as a template,
-		// and clone it for subsequent ones
-		function insertSections() {
-			var template = $('[data-template="services"]');
-			if ( BALANCE.services ) {
-				for (var i = 0; i < BALANCE.services.length; i++) {
-					populateSection( BALANCE.services[i], template.clone(), i );
-				}
-			} else {
-				setTimeout(insertSections, 10);
-			}
-		}
-
-		// Go go go!
 		insertSections();
 	}
 
