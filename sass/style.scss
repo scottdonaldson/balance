@@ -886,6 +886,14 @@ main {
 
 // ----- Instructors
 
+#leader {
+	margin-bottom: 5em;
+	.instructor {
+		border: 0;
+		width: 100%;
+	}
+}
+
 .instructors {
 	border-top: 3px solid $green;
 	.heading + & {
@@ -901,6 +909,8 @@ main {
 	width: 33.333%;
 	&.first { left: -1px; }
 	&.last { left: 1px; }
+
+	img { width: 100%; }
 
 	.name {
 		background: $lavender;

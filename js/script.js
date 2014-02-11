@@ -168,7 +168,7 @@
 			$this.removeClass('active');
 			$this.parent().next().slideUp();
 		}
-		$this.closest('.instructors').siblings('.instructors').find('.clearfix.content').slideUp();
+		$this.closest('.instructors').siblings('.instructors').find('.clearfix.content.bg-white').slideUp();
 	});
 
 	// ----- Studio
