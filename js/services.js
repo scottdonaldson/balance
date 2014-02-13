@@ -43,7 +43,7 @@
 					content = $('<div class="content bg-white">');
 
 				heading.html( '<h3>' + service.classes[i].classes_name + '</h3>' )
-					.append('<div class="scroll-up"><aside /></div>')
+					.append('<div class="scroll-up"><span class="icon-arrow-up white aligncenter" /></div>')
 					.prependTo( module );
 
 				main.find('#masthead .module').append('<div class="class-preview" data-scrollto="'+ service.classes[i].classes_name +'">' + service.classes[i].classes_name + '<\/div>');
@@ -96,7 +96,7 @@
 		
 		for (var i = 0; i < tabs.length; i++) {
 			var tab = $('<div class="tab brandon hover">'),
-				arrow = $('<div class="arrow">');
+				arrow = $('<span class="icon-arrow-right">');
 
 			tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
 			tab.prependTo( main.find('#services-nav') );
@@ -106,6 +106,8 @@
 				$(this).removeClass('hover');
 			});
 		}
+		main.find('#services-nav').prepend('<span class="more-services">More Services <span class="icon-arrow-down"></span></span>');
+
 		setTimeout(function(){
 			hideTab( $('.tab').first() );
 		}, 1400);

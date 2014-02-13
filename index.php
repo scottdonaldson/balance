@@ -38,13 +38,13 @@
 		<div id="pagination" class="clearfix">
 			<?php if (get_next_posts_link()) { ?>
 			<div class="alignleft older">
-				<div class="arrow"></div>
+				<div class="icon-arrow-left"></div>
 				<?php next_posts_link('Older'); ?>
 			</div>
 			<?php }
 			if (get_previous_posts_link()) { ?>
 			<div class="alignright newer">
-				<div class="arrow"></div>
+				<div class="icon-arrow-right"></div>
 				<?= get_previous_posts_link('Newer'); ?>
 			</div>
 			<?php } ?>
