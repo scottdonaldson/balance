@@ -79,6 +79,8 @@ header {
 	width: 100%;
 	z-index: 999;
 
+	a { text-decoration: none; }
+
 	nav {
 		@include brandon;
 		text-align: center;
@@ -89,24 +91,24 @@ header {
 		}
 
 		& > ul > li {
-			background: $purple;
-			height: $menu_item_height;
 			float: left;
 			margin: 0 2px;
-			padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
 
-			@media screen and (max-width: $small_screen_menu) {
-				display: none;
-			}
-
-			span, a, a:visited {
+			& > a {
+				background: $purple;
+				display: block;
 				color: #fff;
-				text-decoration: none;
+				height: $menu_item_height;
+				padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
 
 				&:active,
 				&:hover {
 					color: $green;
 				}
+			}
+
+			@media screen and (max-width: $small_screen_menu) {
+				display: none;
 			}
 		}
 
@@ -126,20 +128,24 @@ header {
 }
 
 #logo {
+	background: $purple;
 	border-bottom: 2px solid $lavender;
 	display: block;
 	margin-left: 0;
-	padding-top: 0.6em;
-	img {
-		width: 180px;
+
+	a {
+		display: block;
+		padding: 0;
 	}
-	@media screen and (max-width: $small_screen_menu) {
-		border-bottom: 0;
+	img {
+		top: 0.6em;
+		width: 180px;
 	}
 }
 
 #menu {
 	background: transparent; // goes on the <span> instead
+	color: #fff;
 	cursor: pointer;
 	padding: 0; // same
 
@@ -193,6 +199,13 @@ header {
 #find-us {
 	float: right;
 	margin-right: 0;
+
+	a {
+		background: $lavender;
+		&:active, &:focus, &:hover {
+			color: $purple;
+		}
+	}
 }
 
 #find-us-menu {
@@ -219,6 +232,8 @@ header {
 		background: $lavender;
 		display: block !important;
 		cursor: pointer;
+		height: 48px;
+		padding: 1em;
 		float: right;
 	}
 
@@ -227,11 +242,27 @@ header {
 		border-radius: 2px;
 		height: 3px;
 		margin-bottom: 4px;
-		top: -1px;
 		transition: 0.2s;
 		width: 20px;
 	}
 	&:active .stripe { background: $green; }
+}
+
+.exit-small-screen-menu {
+	bottom: 0;
+	display: none;
+	left: 0;
+	right: 0;
+	position: absolute;
+	transition: 0.2s;
+	top: 0;
+
+	.small-screen-menu-active & {
+		background: rgba(255, 255, 255, 0.15);
+		cursor: pointer;
+		display: block;
+		z-index: 1000; // greater than header
+	}
 }
 
 #page {
@@ -585,8 +616,11 @@ main {
 .scroll-down {
 	cursor: pointer;
 	padding: 10px 0 0 10px;
-	transition: 0.8s;
+	text-shadow: 0 0 3px transparentize(#000, 0.25);
+	transition: 0.5s;
 	.preload & { opacity: 0; } // fade in on page load
+	&:hover { padding-top: 15px; }
+
 	// redundant on smaller screens
 	@media screen and (max-width: $break_masthead) { display: none; }
 
@@ -786,10 +820,10 @@ main {
 		background: $green;
 		color: $purple;
 		cursor: pointer;
-		font-size: 1.8em;
+		font-size: 1.5em;
 		margin-bottom: 0.5em;
 		padding: 0.4em 0.4em 0.1em 1.5em;
-		right: -210px;
+		right: -220px;
 		top: 0; // override brandon fix
 		transition: 0.3s;
 		width: 250px;
@@ -806,12 +840,12 @@ main {
 	}
 
 	.arrow {
-		height: 16px;
+		height: 14px;
 		position: absolute;
 		left: 0.25em;
 		top: 0.5em;
 		transform: rotate(135deg);
-		width: 16px;
+		width: 14px;
 
 		&:before, &:after {
 			background: $purple;
@@ -869,6 +903,7 @@ main {
 .class-preview {
 	background: #fff;
 	color: $purple;
+	cursor: pointer;
 	font-size: 1.2em;
 	margin-bottom: 2px;
 	padding: 0.5em 1.8em;
@@ -881,6 +916,13 @@ main {
 		position: absolute;
 		right: 1em;
 		top: 0;
+		transition: 0.2s;
+	}
+	&:active,
+	&:hover {
+		&:after {
+			color: $purple;
+		}
 	}
 }
 
@@ -1068,6 +1110,33 @@ main {
 		a {
 			padding-right: 2.5em;
 		}
+	}
+}
+
+// ----- Modal
+
+.modal-cover {
+	background: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	display: none;
+	left: 0;
+	right: 0;
+	position: absolute;
+	top: 0;
+	z-index: 1000;
+}
+
+.modal {
+	display: none;
+	left: 50%;
+	margin-left: -40%;
+	position: fixed;
+	width: 80%;
+	z-index: 1001;
+
+	.content.bg-white {
+		height: 100%;
+		overflow-y: scroll;
 	}
 }
 

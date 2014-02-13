@@ -12,17 +12,15 @@
 	$(document).ready(function() {
 		var main = $('main');
 		init( main, location.hash.slice(1) );
-
-		window.addEventListener('hashchange', function(){
-			init( main, location.hash.slice(1) );
-		});
 	});
 
 	function initialize( main, index ) {
+
 		// Deactivate
 		$('html, body').animate({
 			scrollTop: 0
 		}, 800);
+
 		main.fadeOut(function(){
 			main.find('#content .module').remove();
 			main.find('.class-preview').remove();
@@ -30,6 +28,8 @@
 			displayTabs( main, index );
 
 			var service = BALANCE.services[index];
+
+			window.location.hash = service.name.toLowerCase();
 
 			main.find('#masthead').css('background-image', 'url(' + service.photo + ')' )
 				.find('h1').html( service.name );
@@ -74,6 +74,15 @@
 		});
 	}
 
+	function hideTab( tab ) {
+		tab.removeClass('hover');
+		if ( tab.next('.tab').length > 0 ) {
+			setTimeout(function(){
+				hideTab( tab.next('.tab') );
+			}, 160);
+		}
+	}
+
 	function displayTabs( main, index ) {
 
 		$('.tab').remove();
@@ -98,8 +107,8 @@
 			});
 		}
 		setTimeout(function(){
-			$('.tab').removeClass('hover');
-		}, 1000);
+			hideTab( $('.tab').first() );
+		}, 1400);
 	}
 
 	$('body').on('click', '.tab', function() {

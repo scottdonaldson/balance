@@ -30,24 +30,18 @@
 	// ----- Small screen menu
 
 	var smallScreenMenu = $('#small-screen-menu');
-	$('#small-screen-menu-icon').click(function(){
-		if ( !body.hasClass('small-screen-menu-active') ) {
-			page.animate({
-				left: '-75%'
-			});
-			smallScreenMenu.animate({
-				left: '25%'
-			});
-		} else {
-			page.animate({
-				left: 0
-			});
-			smallScreenMenu.animate({
-				left: '100%'
-			});
-		}
-		body.toggleClass('small-screen-menu-active');
-	});
+	function showSmallScreenMenu() {
+		page.animate({ left: '-75%' });
+		smallScreenMenu.animate({ left: '25%' });
+		body.addClass('small-screen-menu-active');
+	}
+	function hideSmallScreenMenu() {
+		page.animate({ left: 0 });
+		smallScreenMenu.animate({ left: '100%' });
+		body.removeClass('small-screen-menu-active');
+	}
+	$('#small-screen-menu-icon').click( showSmallScreenMenu );
+	body.on('click', '.exit-small-screen-menu', hideSmallScreenMenu);
 
 	// ----- Pages: make the masthead the height of the screen
 
@@ -176,6 +170,30 @@
 	var features = $('.page-template-pagesstudio-php .feature');
 	features.find('.heading, img').click(function(){
 		$(this).parent().find('.description').slideToggle();
+	});
+
+	// ----- Modals
+	var modal = $('.modal'),
+		modalCover = $('.modal-cover');
+
+	function showModal(e) {
+		e.preventDefault();
+		modal.css('height', win.height() * 0.5);
+		modal.fadeIn().css({
+			top: win.height() * 0.25
+		});
+		modalCover.fadeIn();
+	}
+
+	function removeModal() {
+		modal.fadeOut();
+		modalCover.fadeOut();
+	}
+
+	$('[data-modal]').click( showModal );
+	$('.modal-close, .modal-cover').click( removeModal );
+	win.keydown(function(e){
+		if ( e.keyCode === 27 ) { removeModal(); }
 	});
 
 }(jQuery));
