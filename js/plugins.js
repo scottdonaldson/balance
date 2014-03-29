@@ -28,7 +28,14 @@ BALANCE.makeSameHeight = function() {
         BALANCE['same-height-groups'][i].height('auto').each(function() {
             var $this = $(this);
             targetHeight = $this.height() > targetHeight ? $this.height() : targetHeight;
-        }).height(targetHeight);
+            
+            $this.height(targetHeight);
+
+            $this.find('.vcenter').each(function(){
+                var _this = $(this);
+                _this.css('top', $this.height() > _this.height() ? ($this.height() - _this.height()) / 2 : 0);
+            });
+        });
     }
 }
 // Call this a bunch of times -- there's some weird cross-browser issues

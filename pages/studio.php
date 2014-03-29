@@ -19,8 +19,9 @@ get_template_part('masthead'); ?>
 		<div class="module">
 			<?php while (has_sub_field('feature')) { ?>
 				<div class="feature">
-					<div class="content bg-purple heading">
+					<div class="content bg-purple heading with-corner-button">
 						<h2><?php the_sub_field('name'); ?></h2>
+						<div class="corner-button"><span>+</span></div>
 					</div>
 					<img src="<?php the_sub_field('photo'); ?>">
 					<div class="content bg-white description" style="display: none;">

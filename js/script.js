@@ -178,4 +178,28 @@
 		$(this).parent().find('.description').slideToggle();
 	});
 
+	// ----- Modal
+
+	var modal = $('.modal-container');
+	function toggleModal(e) {
+		e.preventDefault();
+		var on = body.hasClass('modal-active');
+		on ? setTimeout(function(){ body.removeClass('modal-active') }, 300) : body.addClass('modal-active');
+		modal.animate({ opacity: on ? 0 : 1 });
+
+	}
+	$('[data-toggle="modal"]').click( toggleModal );
+
+	modal.click(function(e){
+		if ( $(e.target).parents('.modal-content').length !== 1 ) {
+			toggleModal(e);
+		}
+	});
+
+	win.keyup(function(e){
+		if ( e.keyCode === 27 && body.hasClass('modal-active')) {
+			toggleModal(e);
+		}
+	});
+
 }(jQuery));

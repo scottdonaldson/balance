@@ -15,7 +15,7 @@
 			<a href="#">
 				<span class="icon icon-file"></span> <span>Policies</span>
 			</a>
-			<a href="#">
+			<a href="#" data-toggle="modal">
 				<span class="icon icon-envelope"></span> <span>Join the newsletter</span>
 			</a>
 			<a href="#">
@@ -29,6 +29,19 @@
 </footer> 
 
 </div><!-- #page -->
+
+<div class="modal-container">
+	<div class="modal-content module">
+
+		<div class="dummy">
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p>
+			</div>
+		</div>
+
+		<div class="modal-close" data-toggle="modal">&#10005;</div>
+	</div>
+</div>
 
 <?php /* Modernizr and jQuery are included in the <head>, other scripts here */ ?>
 <script src="<?= bloginfo('template_url'); ?>/js/balance.min.js"></script>

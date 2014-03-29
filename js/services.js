@@ -99,7 +99,7 @@
 		}
 		setTimeout(function(){
 			$('.tab').removeClass('hover');
-		}, 1000);
+		}, 1600);
 	}
 
 	$('body').on('click', '.tab', function() {

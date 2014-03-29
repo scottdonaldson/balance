@@ -69,6 +69,7 @@ the_post(); ?>
 			);
 			// Loop through the updates and specials
 			$rows = get_field('updates_and_specials');
+			$i = 0;
 			foreach ($rows as $row) {
 
 				// Dates to be formatted and output
@@ -109,10 +110,10 @@ the_post(); ?>
 					<article class="post clearfix">
 						<div class="header">
 							<time>
-								<div class="same-height" data-group="1"><?= $output_date; ?></div>
+								<div class="same-height" data-group="<?= $i; ?>"><?= $output_date; ?></div>
 							</time>
 							<div class="title">
-								<div class="same-height" data-group="1"><?= $name; ?></div>
+								<div class="same-height" data-group="<?= $i; ?>"><div class="vcenter"><?= $name; ?></div></div>
 							</div>
 						</div>
 						<?php if ($featured_image || $description) { ?>
@@ -127,6 +128,8 @@ the_post(); ?>
 						<?php } ?>
 					</article>
 				<?php } 
+
+				$i++;
 			}
 			?>
 
