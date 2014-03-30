@@ -10,44 +10,34 @@
 	var menuTargets = $('[menu-target]');
 
 	function activateMenu() {
-		$('#' + this.getAttribute('menu-target')).addClass('active');
+		$('#' + $(this).attr('menu-target')).addClass('active');
 	}
 	function deactivateMenu() {
-		var target = $('#' + this.getAttribute('menu-target'));
-		if ( !target.is(':hover') ) {
-			target.removeClass('active');
-		}
+		var target = $('#' + $(this).attr('menu-target'));
 
-		if ( !target.hasClass('listening') ) {
-			target.mouseleave(function(){
-				target.removeClass('active');
-			});
-			target.addClass('listening');
-		}
+		target.removeClass('active');
+
+		target.mouseenter(function(){
+			$(this).addClass('active');
+		}).mouseleave(function(){
+			$(this).removeClass('active');
+		});
 	}
 	menuTargets.mouseenter( activateMenu ).mouseleave( deactivateMenu );
 
 	// ----- Small screen menu
 
 	var smallScreenMenu = $('#small-screen-menu');
-	$('#small-screen-menu-icon').click(function(){
-		if ( !body.hasClass('small-screen-menu-active') ) {
-			page.animate({
-				left: '-75%'
-			});
-			smallScreenMenu.animate({
-				left: '25%'
-			});
-		} else {
-			page.animate({
-				left: 0
-			});
-			smallScreenMenu.animate({
-				left: '100%'
-			});
-		}
-		body.toggleClass('small-screen-menu-active');
-	});
+	function showSmallScreenMenu() {
+		smallScreenMenu.animate({ left: '25%' }, 300);
+		body.addClass('small-screen-menu-active');
+	}
+	function hideSmallScreenMenu() {
+		smallScreenMenu.animate({ left: '100%' }, 300);
+		body.removeClass('small-screen-menu-active');
+	}
+	$('#small-screen-menu-icon').click( showSmallScreenMenu );
+	body.on('click', '.exit-small-screen-menu', hideSmallScreenMenu);
 
 	// ----- Pages: make the masthead the height of the screen
 
@@ -79,44 +69,6 @@
 	$('#updates-specials .header').click(function(){
 		$(this).toggleClass('active').next().slideToggle();
 	});
-
-	// ----- Home page -- insert <section>s after API call to Services page
-
-	// Given some data and a templated <section>, insert the data into the <section>
-	function populateSection( data, section, i ) {
-		section.css({
-			backgroundImage: 'url(' + data.photo_main + ')',
-			zIndex: 100 - i
-		});
-		section.find('h2').html( data.name );
-		section.find('p').html( data.intro_title_text );
-		section.find('a').attr('href', section.find('a').attr('href') + '#' + BALANCE.slugify( data.name ) );
-		if ( i % 2 === 1 ) {
-			section.find('.module').addClass('right');
-		}
-		section.insertBefore( '#updates-specials' ).show();
-		if ( i === BALANCE.services.length - 1 ) {
-			body.removeClass('preload');
-		}
-	}
-
-	// Insert the sections -- use the existing <section> as a template,
-	// and clone it for subsequent ones
-	function insertSections() {
-		var template = $('[data-template="services"]');
-		if ( BALANCE.services ) {
-			for (var i = 0; i < BALANCE.services.length; i++) {
-				populateSection( BALANCE.services[i], template.clone(), i );
-			}
-		} else {
-			setTimeout(insertSections, 10);
-		}
-	}
-
-	// Go go go!
-	if ( body.hasClass('home') ) {
-		insertSections();
-	}
 
 	// ----- "Scroll down" paragraph (if only on one line)
 
@@ -168,7 +120,7 @@
 			$this.removeClass('active');
 			$this.parent().next().slideUp();
 		}
-		$this.closest('.instructors').siblings('.instructors').find('.clearfix.content').slideUp();
+		$this.closest('.instructors').siblings('.instructors').find('.clearfix.content.bg-white').slideUp();
 	});
 
 	// ----- Studio

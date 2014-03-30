@@ -12,17 +12,15 @@
 	$(document).ready(function() {
 		var main = $('main');
 		init( main, location.hash.slice(1) );
-
-		window.addEventListener('hashchange', function(){
-			init( main, location.hash.slice(1) );
-		});
 	});
 
 	function initialize( main, index ) {
+
 		// Deactivate
 		$('html, body').animate({
 			scrollTop: 0
 		}, 800);
+
 		main.fadeOut(function(){
 			main.find('#content .module').remove();
 			main.find('.class-preview').remove();
@@ -30,6 +28,8 @@
 			displayTabs( main, index );
 
 			var service = BALANCE.services[index];
+
+			window.location.hash = service.name.toLowerCase();
 
 			main.find('#masthead').css('background-image', 'url(' + service.photo + ')' )
 				.find('h1').html( service.name );
@@ -43,7 +43,7 @@
 					content = $('<div class="content bg-white">');
 
 				heading.html( '<h3>' + service.classes[i].classes_name + '</h3>' )
-					.append('<div class="scroll-up"><aside /></div>')
+					.append('<div class="scroll-up"><span class="icon-arrow-up white aligncenter" /></div>')
 					.prependTo( module );
 
 				main.find('#masthead .module').append('<div class="class-preview" data-scrollto="'+ service.classes[i].classes_name +'">' + service.classes[i].classes_name + '<\/div>');
@@ -74,6 +74,15 @@
 		});
 	}
 
+	function hideTab( tab ) {
+		tab.removeClass('hover');
+		if ( tab.next('.tab').length > 0 ) {
+			setTimeout(function(){
+				hideTab( tab.next('.tab') );
+			}, 160);
+		}
+	}
+
 	function displayTabs( main, index ) {
 
 		$('.tab').remove();
@@ -87,7 +96,7 @@
 		
 		for (var i = 0; i < tabs.length; i++) {
 			var tab = $('<div class="tab brandon hover">'),
-				arrow = $('<div class="arrow">');
+				arrow = $('<span class="icon-arrow-right">');
 
 			tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
 			tab.prependTo( main.find('#services-nav') );
@@ -97,9 +106,12 @@
 				$(this).removeClass('hover');
 			});
 		}
+		main.find('#services-nav').prepend('<span class="more-services">More Services <span class="icon-arrow-down"></span></span>');
+
 		setTimeout(function(){
 			$('.tab').removeClass('hover');
 		}, 1600);
+
 	}
 
 	$('body').on('click', '.tab', function() {

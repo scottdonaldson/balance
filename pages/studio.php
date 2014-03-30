@@ -21,7 +21,7 @@ get_template_part('masthead'); ?>
 				<div class="feature">
 					<div class="content bg-purple heading with-corner-button">
 						<h2><?php the_sub_field('name'); ?></h2>
-						<div class="corner-button"><span>+</span></div>
+						<div class="corner-button"><span class="plus">+</span></div>
 					</div>
 					<img src="<?php the_sub_field('photo'); ?>">
 					<div class="content bg-white description" style="display: none;">

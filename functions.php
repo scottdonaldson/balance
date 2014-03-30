@@ -3,6 +3,10 @@
 // Register nav menu
 register_nav_menu('primary', 'Primary Menu');
 
+// Add image sizes
+add_image_size('square', 400, 400, true);
+add_image_size('rectangle', 1200, 300, true);
+
 // include jQuery
 if (!is_admin()) add_action("wp_enqueue_scripts", "my_jquery_enqueue", 11);
 function my_jquery_enqueue() {

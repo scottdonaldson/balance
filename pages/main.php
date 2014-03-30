@@ -2,39 +2,38 @@
 /*
 Template Name: Main Page
 */
-
-function get_services() { ?>
-	<script>
-	(function(){
-		var req = new XMLHttpRequest();
-		req.open('GET', '<?= home_url(); ?>/services/?api=true', true);
-		req.send();
-
-		req.onload = function() {
-		    BALANCE.services = JSON.parse(this.response);
-		};
-	}());
-	</script>
-<?php } 
-add_action('wp_head', 'get_services');
-
 get_header();
 the_post(); ?>
 
-<!-- template that generates other <section>s based on API call to Services page -->
-<section data-template="services" class="background-cover" style="display: none;">
+<?php
+$services_page = get_page_by_title('Services');
+$services_page_id = $services_page->ID;
+$services = get_field('type', $services_page_id);
+
+$z = 100;
+
+foreach ($services as $service) { 
+	$slug = strtolower($service['name']);
+	$slug = str_replace(' ', '-', $slug);
+	?>
+
+<section class="background-cover" style="background-image: url(<?= $service['photo_main']; ?>); z-index: <?= $z; ?>;">
 	<div class="full-width">
 		<div class="height-100">
-			<div class="module bg-white abs bottom">
+			<div class="module bg-white abs bottom <?php if ($z % 2 === 1) { echo 'right'; } ?>">
 				<div class="content">
-					<h2></h2>
-					<p></p>
+					<h2><?= $service['name']; ?></h2>
+					<p><?= $service['intro_title_text']; ?></p>
 				</div>
-				<a class="content footer" href="<?= home_url(); ?>/services/"></a>
+				<a class="content footer" href="<?= home_url(); ?>/services/#<?= $slug; ?>">View <?= $service['name']; ?> Services</a>
 			</div>
 		</div>
 	</div>
 </section>
+
+<?php 
+$z--;
+} ?>
 
 <div id="updates-specials" style="z-index: 1;">
 	<div class="full-width">

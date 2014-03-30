@@ -2,19 +2,6 @@
 /*
 Template Name: Services
 */
-
-function output_services() { ?>
-	<script>BALANCE.services = <?= json_encode(get_field('type')); ?></script>
-<?php } 
-add_action('wp_head', 'output_services');
-
-// Build in a little API for other pages to grab services
-if (isset($_GET['api']) && $_GET['api'] === 'true') {
-	header('Content-type: application/json');
-	echo json_encode(get_field('type'));
-	return;
-}
-
 get_header();
 the_post();
 ?>

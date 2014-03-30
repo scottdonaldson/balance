@@ -12,69 +12,68 @@ get_template_part('masthead'); ?>
 	<div class="full-width clearfix">
 
 		<div class="module">
+			
 			<div class="content bg-purple heading">
-				<h2>Instructors</h2>
+				<h2>Team Leader</h2>
 			</div>
 
-			<div class="instructors">
+			<div class="instructors" id="leader">
 				<div class="clearfix">
-					<div class="instructor first" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
+					<div class="instructor" data-bio="<p><?php the_field('leader_bio'); ?></p>">
+						<?php 
+						$leader = wp_get_attachment_image_src( get_field('leader_photo'), 'rectangle' );
+						$leader = $leader[0];
+						?>
+						<img src="<?= $leader; ?>" style="width: 100%;">
 						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="1">
-								<h3>Stacy Doe</h3> <span>Yoga &amp; Pilates</span>
-							</div>
-						</div>
-					</div>
-					<div class="instructor" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
-						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="1">
-								<h3>Jane Doe</h3> <span>Yoga &amp; Gyrotonic</span>
-							</div>
-						</div>
-					</div>
-					<div class="instructor last" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
-						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="1">
-								<h3>Alice Doe</h3> <span>Pilates &amp; Gyrotonic</span>
-							</div>
+							<h3><?php the_field('leader_name'); ?></h3> <span><?php the_field('leader_title'); ?></span>
 						</div>
 					</div>
 				</div>
 				<div class="clearfix content bg-white" style="display: none;"></div>
 			</div>
 
-			<div class="instructors">
-				<div class="clearfix">
-					<div class="instructor first" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
-						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="2">
-								<h3>Stacy Doe</h3> <span>Yoga &amp; Pilates</span>
-							</div>
-						</div>
-					</div>
-					<div class="instructor" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
-						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="2">
-								<h3>Jane Doe</h3> <span>Yoga &amp; Gyrotonic</span>
-							</div>
-						</div>
-					</div>
-					<div class="instructor last" data-bio="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore optio culpa nisi enim id maxime error similique saepe vitae mollitia rem iure. Velit facere veritatis natus quo nostrum fuga numquam deserunt aliquam iure ea dolorum provident laboriosam magni explicabo error tempore architecto labore quibusdam adipisci earum eaque quisquam ab.</p>">
-						<img src="http://placehold.it/500x500">
-						<div class="content name lesser">
-							<div class="same-height clearfix" data-group="2">
-								<h3>Alice Doe</h3> <span>Pilates &amp; Gyrotonic</span>
-							</div>
-						</div>
-					</div>
+			<?php if (get_field('instructors')) { ?>
+
+				<div class="content bg-purple heading">
+					<h2>Instructors</h2>
 				</div>
-				<div class="clearfix content bg-white" style="display: none;"></div>
-			</div>
+
+				<?php
+				$instructors = get_field('instructors');
+				$i = 0;
+				foreach ( $instructors as $instructor ) { 
+					if ($i % 3 === 0) { ?>
+						<div class="instructors">
+							<div class="clearfix">
+					<?php } ?>
+
+						<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<p><?= $instructor['bio']; ?></p>">
+
+							<?php
+							$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );
+							$photo = $photo[0];
+							?>
+							<img src="<?= $photo; ?>">
+							<div class="content name lesser">
+								<div class="same-height clearfix" data-group="<?= floor($i / 3) + 1; ?>">
+									<h3><?= $instructor['name']; ?></h3> <span><?= $instructor['specialty_or_title']; ?></span>
+								</div>
+							</div>
+						</div>
+					<?php 
+					if ($i % 3 === 2 || $i + 1 === count($instructors) ) { ?>
+							</div><!-- .clearfix -->
+							<div class="clearfix content bg-white" style="display: none;"></div>
+						</div><!-- .instructors -->
+					<?php } ?>
+
+					<?php
+					$i++;
+				}
+			}
+			?>
+
 		</div>
 
 	</div>

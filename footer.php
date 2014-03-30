@@ -12,7 +12,7 @@
 		</div>
 
 		<div id="ext-links" class="alignright uppercase">
-			<a href="#">
+			<a href="#" data-modal="policies">
 				<span class="icon icon-file"></span> <span>Policies</span>
 			</a>
 			<a href="#" data-toggle="modal">
@@ -26,7 +26,29 @@
 			</a>
 		</div>
 	</div>
-</footer> 
+</footer>
+
+<div class="modal module">
+	<div class="content bg-purple heading clearfix">
+		<h3 class="alignleft">Policies</h3>
+		<div class="alignright white modal-close big" style="cursor: pointer; margin-top: 0.2em; top: 50%;">&#10005;</div>
+	</div>
+	<div class="content bg-white">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+	</div>
+</div>
+
+<div class="modal-cover"></div>
+<div class="exit-small-screen-menu"></div>
 
 </div><!-- #page -->
 

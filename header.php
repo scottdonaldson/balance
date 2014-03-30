@@ -26,28 +26,28 @@
 
 <body <?php body_class('preload'); ?>>
 
-    <nav id="small-screen-menu">
-        <ul class="content">
-            <?php wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'menu_class' => '',
-                'container' => 'li',
-                'container_class' => ''
-            )); ?>
-            <li>
-                <a href="#">Schedule Appt</a>
-            </li>
-            <li>
-                <a href="#">Client Login</a>
-            </li>
-            <hr>
-            <div class="aligncenter"><h3>Find Us</h3>
-                <address class="delicious lowercase">4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
-                <span class="delicious lowercase tel">T. <tel></tel>301.986.1730</span><br>
-                <a href="#">Get Google Directions</a>
-            </div>
-        </ul>
-    </nav>
+<nav id="small-screen-menu">
+    <ul class="content">
+        <?php wp_nav_menu(array(
+            'theme_location' => 'primary',
+            'menu_class' => '',
+            'container' => 'li',
+            'container_class' => ''
+        )); ?>
+        <li>
+            <a href="#">Schedule Appt</a>
+        </li>
+        <li>
+            <a href="#">Client Login</a>
+        </li>
+        <hr>
+        <div class="aligncenter"><h3>Find Us</h3>
+            <address class="delicious lowercase">4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
+            <span class="delicious lowercase tel">T. <tel>301.986.1730</tel></span><br>
+            <a href="#">Get Google Directions</a>
+        </div>
+    </ul>
+</nav>
 
 <div id="page" class="hfeed site">
 
