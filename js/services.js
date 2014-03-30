@@ -108,9 +108,14 @@
 		}
 		main.find('#services-nav').prepend('<span class="more-services">More Services <span class="icon-arrow-down"></span></span>');
 
-		setTimeout(function(){
-			$('.tab').removeClass('hover');
-		}, 1600);
+
+		
+			$('.tab').each(function(index){
+				var _this = $(this);
+				setTimeout(function(){
+					_this.removeClass('hover');
+				}, 1600 + 250 * index);
+			});
 
 	}
 

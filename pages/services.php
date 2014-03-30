@@ -2,6 +2,12 @@
 /*
 Template Name: Services
 */
+
+function output_services() { ?>
+	<script>BALANCE.services = <?= json_encode(get_field('type')); ?></script>
+<?php } 
+add_action('wp_head', 'output_services');
+
 get_header();
 the_post();
 ?>

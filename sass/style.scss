@@ -172,7 +172,12 @@ header {
 		height: $menu_item_height;
 		display: block;
 		padding: $menu_item_padding_top 1em $menu_item_padding_bottom;
+		transition: 0.2s;
 		z-index: 2;
+		
+		&:hover {
+			color: $green;
+		}
 	}
 }
 
@@ -875,6 +880,12 @@ main {
 			margin: 0;
 			padding: 0.4em 0.4em 0.1em;
 		}
+
+		@media screen and (max-width: 400px) {
+			&:first-of-type {
+				padding-top: 1.2em;
+			}
+		}
 	}
 
 	.icon-arrow-right {
@@ -905,6 +916,7 @@ main {
 		&:hover {
 			.tab {
 				margin-top: 0;
+				z-index: 2;
 			}
 		}
 
@@ -920,11 +932,16 @@ main {
 			position: absolute;
 			top: 0;
 			width: 100%;
+			z-index: 1;
 
 			.icon-arrow-down { 
 				font-size: 1.2em;
 				margin-left: 0.2em;
 				top: 0.1em;
+			}
+
+			@media screen and (max-width: 400px) {
+				padding-top: 0.9em;
 			}
 		}
 	}
