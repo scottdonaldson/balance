@@ -387,6 +387,7 @@ header {
 
 			&:not(:first-child) {
 				margin-top: 2em;
+				margin-bottom: 0.5em;
 			}
 		}
 
@@ -970,6 +971,111 @@ main {
 		&:after {
 			color: $purple;
 		}
+	}
+}
+
+.meta-block {
+	background: #eee;
+	border-right: 2px solid #fff;
+	float: left;
+	text-align: center;
+	width: 25%;
+
+	h4 {
+		font-size: 1.6em;
+		margin: 0;
+		padding: 0.5em 0;
+
+		small { font-size: 65%; }
+	}
+
+	aside {
+		background: $turquoise;
+		color: #fff;
+		text-transform: uppercase;
+	}
+
+	.cost {
+		cursor: pointer;
+		transition: 0.2s;
+		&:hover {
+			background: $purple;
+		}
+
+		.plus {
+			position: absolute;
+			right: 10px;
+			top: 0;
+		}
+	}
+
+	&.last-meta-block {
+		border-right: 0;
+	}
+
+	& > a,
+	& > a:visited {
+		background: $turquoise;
+		color: #fff;
+		display: block;
+		@include brandon;
+		font-size: 1.6em;
+		padding: 1em 0 0.87em;
+		text-decoration: none;
+		text-transform: uppercase;
+		&:active, &:focus, &:hover {
+			background: $purple;
+		}
+	}
+}
+
+.discount {
+	background: $green;
+	color: $purple;
+	float: right;
+	margin-top: 2px;
+	text-align: center;
+	width: 50%;
+}
+
+table {
+	&,
+	& tbody {
+		display: block;
+		width: 100%;
+	}
+
+	td {
+		background: $lt_grey;
+		border: 2px solid #fff;
+		font-size: 1.6em;
+		text-align: center;
+	}
+
+	tr:first-child,
+	tr.first-child {
+		td {
+			background: $turquoise;
+			color: #fff;
+			font-size: 1em;
+			text-transform: uppercase;
+		}
+	}
+
+	td:first-child,
+	td.first-child {
+		background: $turquoise;
+		color: #fff;
+		font-size: 1em;
+		text-transform: uppercase;
+	}
+
+	td:empty {
+		background: transparent !important;
+	}
+
+	td {
+		padding: 5px;
 	}
 }
 

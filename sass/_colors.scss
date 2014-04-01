@@ -20,5 +20,9 @@ $green: #C7D8D6;
 
 $transparent_green: transparentize($green, 0.05);
 
+$lt_grey: #eee;
+	.lt-grey { color: $lt_grey; }
+	.bg-lt-grey { background-color: $lt_grey; }
+
 .white { color: #fff; }
 .bg-white { background-color: #fff; }

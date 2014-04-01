@@ -38,13 +38,43 @@
 			main.find('#page-intro p').html( service.intro_paragraph_text );
 
 			for (var i = 0; i < service.classes.length; i++) {
-				var module = $('<div class="module" data-target="'+ service.classes[i].classes_name +'">'),
+
+				var nthChild = i === 0 ? 'first-child' : 'not-first-child';
+
+				var module = $('<div class="module ' + nthChild + '" data-target="' + service.classes[i].classes_name + '">'),
 					heading = $('<div class="content heading bg-purple">'),
-					content = $('<div class="content bg-white">');
+					content = $('<div class="content bg-white">'),
+
+					metaInfo = $('<div class="clearfix">'),
+					metaBlock = $('<div class="meta-block">');
+
+				var discountInfo = service.classes[i].classes_cost_info ? '<span class="big">' + service.classes[i].classes_cost_info + '</span><br>' : '';
+
+				var discount = $('<div class="discount" style="display: none;"><p>' + discountInfo + 'Call (301.986.1730) or drop by for more information.</p></div>')
 
 				heading.html( '<h3>' + service.classes[i].classes_name + '</h3>' )
 					.append('<div class="scroll-up"><span class="icon-arrow-up white aligncenter" /></div>')
 					.prependTo( module );
+
+				var duration = service.classes[i].classes_duration.replace(/mins|minutes|min/i, '<small>Min</small>'),
+					size = service.classes[i].classes_size.replace(/max/i, '<small>Max</small>'),
+					cost = service.classes[i].classes_cost;
+
+				if ( duration && size && cost ) {
+
+					metaBlock.clone().html('<h4>' + duration + '</h4><aside>Duration</aside>').appendTo(metaInfo);
+
+					metaBlock.clone().html('<h4>' + size + '</h4><aside>Class Size</aside>').appendTo(metaInfo);
+
+					metaBlock.clone().html('<h4><small>$</small> ' + cost + '</h4><aside class="cost">Cost <span class="plus">+</span></aside>').appendTo(metaInfo);
+
+					metaBlock.clone().addClass('last-meta-block').html('<a href="#">View Schedule</a>').appendTo(metaInfo);
+
+					metaInfo.append(discount);
+
+					metaInfo.prependTo(content);
+
+				}
 
 				main.find('#masthead .module').append('<div class="class-preview" data-scrollto="'+ service.classes[i].classes_name +'">' + service.classes[i].classes_name + '<\/div>');
 
@@ -54,10 +84,25 @@
 					content
 						.append('<h4>' + thisClass.class_name  + '</h4>')
 						.append('<p>' + thisClass.class_description + '<p>');
-					if (thisClass.class_prerequisite) {
+					if ( thisClass.class_prerequisite ) {
 						content.append('<p><strong>Prerequisite:</strong> ' + thisClass.class_prerequisite + '</p>');
 					}
+					
 				}
+
+				if ( service.classes[i].pricing_table ) {
+
+					var table = service.classes[i].pricing_table;
+					table = table.replace(/\$/g, '<small style="margin-right: 5px;">$</small>')
+					table = $(table);
+
+					//var cols = table.find('tr:first').find('td').length;
+
+					table.find('td').css( 'width', 500);
+
+					content.append( table );
+				}
+
 				content.appendTo( module );
 
 				main.find('#page-intro').next().append( module );
@@ -69,6 +114,16 @@
 			} else {
 				main.find('#masthead .scroll-down').appendTo('#masthead .module');
 			}
+
+			$('.cost').each(function(){
+
+				$(this).add( $(this).prev() ).click(function() {
+					var $this = $(this);
+					$this.closest('.module').find('.discount').slideToggle();
+					$this.closest('.module').find('.plus').html( $this.closest('.module').find('.plus').html() === '+' ? '-' : '+' );
+				});
+
+			});
 
 			main.fadeIn();
 		});

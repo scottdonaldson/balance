@@ -8,13 +8,14 @@ module.exports = function(grunt) {
             options: {
                 force: true
             },
-            all: ['Gruntfile.js', 'js/script.js']
+            all: ['Gruntfile.js', 'js/script.js', 'js/services.js']
         },
 
         uglify: {
             build: {
                 files: {
-                    'js/balance.min.js': ['js/plugins.js', 'js/script.js']
+                    'js/balance.min.js': ['js/plugins.js', 'js/script.js'],
+                    'js/services.min.js': ['js/services.js']
                 }
             }
         },
