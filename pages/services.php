@@ -21,7 +21,7 @@ the_post();
 		</div>
 	</div>
 
-	<div id="services-nav"></div>
+	<div id="tabbed-nav"></div>
 
 </section>
 

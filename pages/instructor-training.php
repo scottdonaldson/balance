@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Instructors
+Template Name: Instructor Training
 */
 get_header();
 the_post(); ?>
@@ -36,13 +36,11 @@ the_post(); ?>
 		</div>
 	</div>
 
-	<?php if (get_field('instructor_training_page')) { ?>
 	<div id="tabbed-nav">
-		<a class="tab brandon" href="<?= home_url(); ?>/instructor-training">
-			<span class="icon-arrow-right"></span>Instructor Training
+		<a class="tab brandon" href="<?= home_url(); ?>/instructors">
+			<span class="icon-arrow-right"></span>Instructors
 		</a>
 	</div>
-	<?php } ?>
 
 </section>
 

@@ -42,7 +42,7 @@
 				var nthChild = i === 0 ? 'first-child' : 'not-first-child';
 
 				var module = $('<div class="module ' + nthChild + '" data-target="' + service.classes[i].classes_name + '">'),
-					heading = $('<div class="content heading bg-purple">'),
+					heading = $('<div class="content heading bg-purple with-scroll-up">'),
 					content = $('<div class="content bg-white">'),
 
 					metaInfo = $('<div class="clearfix">'),
@@ -50,7 +50,7 @@
 
 				var discountInfo = service.classes[i].classes_cost_info ? '<span class="big">' + service.classes[i].classes_cost_info + '</span><br>' : '';
 
-				var discount = $('<div class="discount" style="display: none;"><p>' + discountInfo + 'Call (301.986.1730) or drop by for more information.</p></div>')
+				var discount = $('<div class="discount" style="display: none;"><p>' + discountInfo + 'Call (301.986.1730) or drop by for more information.</p></div>');
 
 				heading.html( '<h3>' + service.classes[i].classes_name + '</h3>' )
 					.append('<div class="scroll-up"><span class="icon-arrow-up white aligncenter" /></div>')
@@ -64,11 +64,11 @@
 
 					metaBlock.clone().html('<h4>' + duration + '</h4><aside>Duration</aside>').appendTo(metaInfo);
 
-					metaBlock.clone().html('<h4>' + size + '</h4><aside>Class Size</aside>').appendTo(metaInfo);
+					metaBlock.clone().addClass('second-meta-block').html('<h4>' + size + '</h4><aside>Class Size</aside>').appendTo(metaInfo);
 
 					metaBlock.clone().html('<h4><small>$</small> ' + cost + '</h4><aside class="cost">Cost <span class="plus">+</span></aside>').appendTo(metaInfo);
 
-					metaBlock.clone().addClass('last-meta-block').html('<a href="#">View Schedule</a>').appendTo(metaInfo);
+					metaBlock.clone().addClass('last-meta-block').html('<a href="#">View <br>Schedule</a>').appendTo(metaInfo);
 
 					metaInfo.append(discount);
 
@@ -96,8 +96,6 @@
 					table = table.replace(/\$/g, '<small style="margin-right: 5px;">$</small>')
 					table = $(table);
 
-					//var cols = table.find('tr:first').find('td').length;
-
 					table.find('td').css( 'width', 500);
 
 					content.append( table );
@@ -117,25 +115,22 @@
 
 			$('.cost').each(function(){
 
-				$(this).add( $(this).prev() ).click(function() {
+				$(this).add( $(this).prev() ).on('click', function() {
 					var $this = $(this);
 					$this.closest('.module').find('.discount').slideToggle();
 					$this.closest('.module').find('.plus').html( $this.closest('.module').find('.plus').html() === '+' ? '-' : '+' );
+				});
+
+				$(this).add( $(this).prev() ).on('mouseenter', function(){
+					var $this = $(this);
+					$this.closest('.module').find('.discount').slideDown();
+					$this.closest('.module').find('.plus').html('-');
 				});
 
 			});
 
 			main.fadeIn();
 		});
-	}
-
-	function hideTab( tab ) {
-		tab.removeClass('hover');
-		if ( tab.next('.tab').length > 0 ) {
-			setTimeout(function(){
-				hideTab( tab.next('.tab') );
-			}, 160);
-		}
 	}
 
 	function displayTabs( main, index ) {
@@ -150,28 +145,13 @@
 		}
 		
 		for (var i = 0; i < tabs.length; i++) {
-			var tab = $('<div class="tab brandon hover">'),
+			var tab = $('<div class="tab brandon">'),
 				arrow = $('<span class="icon-arrow-right">');
 
 			tab.html( tabs[i].name.toLowerCase() ).prepend( arrow );
-			tab.prependTo( main.find('#services-nav') );
-			tab.mouseover(function(){
-				$(this).addClass('hover');
-			}).mouseleave(function(){
-				$(this).removeClass('hover');
-			});
+			tab.prependTo( main.find('#tabbed-nav') );
 		}
-		main.find('#services-nav').prepend('<span class="more-services">More Services <span class="icon-arrow-down"></span></span>');
-
-
-		
-			$('.tab').each(function(index){
-				var _this = $(this);
-				setTimeout(function(){
-					_this.removeClass('hover');
-				}, 1600 + 250 * index);
-			});
-
+		main.find('#tabbed-nav').prepend('<span class="more-services">More Services <span class="icon-arrow-down"></span></span>');
 	}
 
 	$('body').on('click', '.tab', function() {

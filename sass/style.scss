@@ -442,7 +442,7 @@ $break_home_module: 900px;
 
 	main {
 		@media screen and (max-width: $break_home_module) {
-			padding-top: 46px; // height of header
+			padding-top: 48px; // height of header
 		}
 	}
 	
@@ -835,6 +835,7 @@ main {
 		margin-bottom: 10px;
 		padding: 1em 1em 0.8em;
 		text-align: center;
+		text-decoration: none;
 
 		&:active, &:focus, &:hover {
 			background: $green;
@@ -855,7 +856,7 @@ main {
 	}
 }
 
-#services-nav {
+#tabbed-nav {
 	position: absolute;
 	right: 0;
 	top: 40%;
@@ -867,14 +868,10 @@ main {
 		font-size: 1.5em;
 		margin-bottom: 0.5em;
 		padding: 0.4em 0.4em 0.1em 1.5em;
-		right: -220px;
+		right: 0;
 		top: 0; // override brandon fix
 		transition: 0.3s;
 		width: 250px;
-
-		&.hover {
-			right: 0;
-		}
 
 		@media screen and (max-width: $break_masthead) {
 			font-size: 1.2em;
@@ -887,6 +884,11 @@ main {
 				padding-top: 1.2em;
 			}
 		}
+	}
+
+	a.tab,
+	a.tab:visited {
+		text-decoration: none;
 	}
 
 	.icon-arrow-right {
@@ -912,6 +914,11 @@ main {
 		.tab { 
 			margin-top: -1.65em;
 			right: 0 !important;
+		}
+
+		a.tab {
+			margin-top: 0;
+			top: 0.35em;
 		}
 
 		&:hover {
@@ -1013,6 +1020,10 @@ main {
 		border-right: 0;
 	}
 
+	br {
+		display: none;
+	}
+
 	& > a,
 	& > a:visited {
 		background: $turquoise;
@@ -1020,11 +1031,37 @@ main {
 		display: block;
 		@include brandon;
 		font-size: 1.6em;
-		padding: 1em 0 0.87em;
+		padding: 1em 0.5em 0.87em;
 		text-decoration: none;
 		text-transform: uppercase;
 		&:active, &:focus, &:hover {
 			background: $purple;
+		}
+
+		@media screen and (max-width: 1200px) {
+			font-size: 1.2em;
+			padding: 1.7em 0.5em 1.25em;
+		}
+	}
+
+	@media screen and (max-width: 850px) {
+		margin-bottom: 2px;
+	
+		&.second-meta-block {
+			border-right: 0;
+		}
+
+		width: 50%;
+	}
+
+	@media screen and (max-width: 500px) {
+		br {
+			display: block;
+		}
+
+		& > a,
+		& > a:visited {
+			padding: 1.1em 0.5em 0.7em;
 		}
 	}
 }
@@ -1034,8 +1071,13 @@ main {
 	color: $purple;
 	float: right;
 	margin-top: 2px;
+	padding: 0 1em;
 	text-align: center;
 	width: 50%;
+
+	@media screen and (max-width: 850px) {
+		width: 100%;
+	}
 }
 
 table {
@@ -1050,6 +1092,10 @@ table {
 		border: 2px solid #fff;
 		font-size: 1.6em;
 		text-align: center;
+
+		@media screen and (max-width: $break_half) {
+			font-size: 1em;
+		}
 	}
 
 	tr:first-child,

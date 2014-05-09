@@ -21,28 +21,45 @@ get_template_part('masthead');
 			</div>
 		</div>
 
-		<div class="module">
-			<div class="content bg-purple heading with-scroll-up">
-				<h2>Getting Started with Pilates</h2>
-				<div class="scroll-up">
-					<span class="aligncenter icon-arrow-up white"></span>
+		<?php
+		$services = get_field('getting_started_module');
+		$i = 0;
+		foreach ($services as $service) { 
+
+			$title = $service['service_name'];
+			$description = $service['description'];
+			$sign_up = $service['sign_up'];
+			$child = $i === 0 ? 'first' : 'not-first';
+			?>
+
+			<div class="module <?= $child; ?>-child">
+
+				<div class="content bg-purple heading with-scroll-up">
+					<h2>Getting started with <?= $title; ?></h2>
+					<div class="scroll-up">
+						<span class="aligncenter icon-arrow-up white"></span>
+					</div>
 				</div>
-			</div>
-			<div class="content clearfix bg-white">
-				<h3>Introductory Lessons</h3>
-				<div class="learn-more">
-					<a>
-						Learn more about<br>
-						<span class="big">private lessons</span>
-					</a>
-					<a>
-						Sign up
-					</a>
+
+				<div class="content clearfix bg-white">
+					<div class="learn-more">
+						<a href="<?= home_url(); ?>/services/#<?= urlencode(strtolower($title)); ?>">
+							Learn more about<br>
+							<span class="big">private lessons</span>
+						</a>
+						<a href="<?= $sign_up; ?>">
+							Sign up
+						</a>
+					</div>
+					<?= $description; ?>
+					
 				</div>
-				<p>Private lessons are the best introduction to learning the Pilates Method. Three private lessons will clear your pre-requisites for our Beginner Pilates classes. To get you started, we have an Introductory Private lesson to give you an initial introduction to Pilates as well as Introductory Packages to help get you ready for classes! Private lessons are scheduled around your availability so just contact us with days and time ranges that work for you.</p>
-				
-			</div>
-		</div>
+
+			</div><!-- .module -->
+
+		<?php 
+		$i++;
+		} ?>
 
 	</div>
 
