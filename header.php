@@ -68,8 +68,16 @@
                 <span class="tel">T. <tel></tel>301.986.1730</span>
 
                 <h3>Parking</h3>
-                <p class="lowercase delicious">Etiam semper lorem ac risus lacinia accumsan. Etiam rutrum magna id semper dignissim. Sed commodo elit sem. Vivamus est lorem, consectetur at egestas vitae, mattis a ipsum.</p>
-                <p class="lowercase delicious">Etiam semper lorem ac risus lacinia accumsan. Etiam rutrum magna id semper dignissim. Sed commodo elit sem. Vivamus est lorem, consectetur at egestas vitae, mattis a ipsum.</p>
+                <div class="lowercase delicious">
+                    <p>Please note that the garage extends under the street and will bring you over to our side of Rosedale Ave if you follow the signs for the NORTH BUILDING elevator.</p>
+
+                    <ul>
+                        <li>Park in one of the spaces marked “Retail."</li>
+                        <li>Take the North Elevator to the retail level – “LR.”</li>
+                        <li>Exit the elevator to the sidewalk, and turn LEFT.</li>
+                        <li>Balance studio is located two doors down on your LEFT</li>
+                    </ul>
+                </div>
             </div>
         </div>
     	<ul>
@@ -88,8 +96,8 @@
                     )); ?>
                     <div class="social">
                         <a href="#" class="icon-envelope"></a>
-                        <a href="#" class="icon-twitter"></a>
-                        <a href="#" class="icon-facebook"></a>
+                        <a href="https://twitter.com/balancestudio" class="icon-twitter" target="_blank"></a>
+                        <a href="https://www.facebook.com/balancestudio" class="icon-facebook" target="_blank"></a>
                     </div>
                 </div>
                 <span>Menu</span>

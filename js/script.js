@@ -132,25 +132,28 @@
 
 	// ----- Modal
 
-	var modal = $('.modal-container');
-	function toggleModal(e) {
+	function showModal(e) {
 		e.preventDefault();
-		var on = body.hasClass('modal-active');
-		on ? setTimeout(function(){ body.removeClass('modal-active') }, 300) : body.addClass('modal-active');
-		modal.animate({ opacity: on ? 0 : 1 });
-
+		var modal = $('.modal-container[data-name="' + $(this).attr('data-modal') + '"]');
+		body.addClass('modal-active');
+		modal.animate({ opacity: 1 });
 	}
-	$('[data-toggle="modal"]').click( toggleModal );
+	function hideModal() {
+		$('.modal-container').animate({ opacity: 0 });
+		setTimeout(function(){ body.removeClass('modal-active') }, 300);
+	}
+	$('[data-modal]').click( showModal );
 
-	modal.click(function(e){
+	$('.modal-container').click(function(e){
 		if ( $(e.target).parents('.modal-content').length !== 1 ) {
-			toggleModal(e);
+			hideModal();
 		}
 	});
+	$('.modal-close').click(hideModal);
 
 	win.keyup(function(e){
 		if ( e.keyCode === 27 && body.hasClass('modal-active')) {
-			toggleModal(e);
+			hideModal();
 		}
 	});
 

@@ -58,7 +58,7 @@ the_post(); ?>
 
 			<div class="instructors" id="leader">
 				<div class="clearfix">
-					<div class="instructor" data-bio="<p><?php the_field('leader_bio'); ?></p>">
+					<div class="instructor" data-bio="<?= htmlentities(the_field('leader_bio')); ?>">
 						<?php 
 						$leader = wp_get_attachment_image_src( get_field('leader_photo'), 'rectangle' );
 						$leader = $leader[0];
@@ -87,7 +87,7 @@ the_post(); ?>
 							<div class="clearfix">
 					<?php } ?>
 
-						<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<p><?= $instructor['bio']; ?></p>">
+						<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<?= htmlentities($instructor['bio']); ?>">
 
 							<?php
 							$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );

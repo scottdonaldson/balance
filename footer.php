@@ -15,73 +15,77 @@
 			<a href="#" data-modal="policies">
 				<span class="icon icon-file"></span> <span>Policies</span>
 			</a>
-			<a href="#" data-toggle="modal">
+			<a href="#" data-modal="newsletter">
 				<span class="icon icon-envelope"></span> <span>Join the newsletter</span>
 			</a>
-			<a href="#">
+			<a href="https://twitter.com/balancestudio" target="_blank">
 				<span class="icon icon-twitter"></span> <span>Follow us</span>
 			</a>
-			<a href="#">
+			<a href="https://www.facebook.com/balancestudio" target="_blank">
 				<span class="icon icon-facebook"></span> <span>Like us</span>
 			</a>
 		</div>
 	</div>
 </footer>
 
-<div class="modal module">
-	<div class="content bg-purple heading clearfix">
-		<h3 class="alignleft">Policies</h3>
-		<div class="alignright white modal-close big" style="cursor: pointer; margin-top: 0.2em; top: 50%;">&#10005;</div>
-	</div>
-	<div class="content bg-white">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero sed quos quam nihil deserunt aliquid amet corporis nulla error aliquam sint magni facilis quod expedita nam quia soluta iste nostrum voluptatum consequuntur. Accusantium ullam nobis sint ea quidem vitae libero? Maxime sapiente dolorem eaque praesentium odit reprehenderit vel iure molestias.</p>
+<div class="modal-container" data-name="policies">
+	<div class="modal-content module">
+
+		<div class="dummy">
+			<div class="content">
+				<p><strong>Reservations:</strong></p>
+				<p>In addition to guaranteeing your space in class, class reservations allow us to alert you in the event of unavoidable class cancellations and emergencies. All sessions require a reservation and either pre-payment or valid credit card information on file. The purchase of a package does not constitute a reservation. Reservations can be made up to 4 weeks in advance through our front desk or through your online studio account. We reserve the right to cancel any classes due to under-enrollment. For your safety, you may not join a class more than 10 minutes past the start time.</p>
+
+				<p><strong>Cancellation Policy:</strong></p>
+				<p>When you make a class or session reservation, we’ll hold the space for you and only you. That means that our cancellation policy must be firm: cancellations made through the front desk (in person, over the phone or via email) must be made at least 24 hours in advance. If you cancel using your online account, you may do so up to 12 hours in advance without penalty. Please remember workshops have a 48 hour cancellation notice. All sessions not cancelled within the appropriate time frame will be charged the full session price.</p>
+
+				<p><strong>Semi-Private Appointments:</strong></p>
+				<p>When signing up for a semi-private session (2 or more people), please know there is a possibility the cost may increase due to the early cancellation of other members. The cost is $40+ per person for semi-privates, $55+ per person for duets, and $80+ for a single session. You will only be contacted if your semi-private reservation has changed to a private due to the early cancellation of other session members.</p>
+
+				<p><strong>Training Packages and Class Cards:</strong></p>
+				<p>All packages, class cards and contracts must be activated within 4 months of purchase. Each purchase has an expiration date which activates on the date of first use. Expiration dates may be found on your receipt, in your online account and on group class sign-in sheets. We will not extend expiration dates, so please keep these in mind when arranging your schedule. Any sessions not used by the expiration date will not be refunded, and packages cannot be extended. Packages and memberships cannot be shared between accounts.</p>
+
+				<p><strong>Refunds:</strong></p>
+				<p>We do not offer refunds. A refund may only be granted in the event of a medical condition that prohibits physical activity. All such refunds are subject to a $25 processing fee. If a package is partially used, the non-discounted (single session) price for the used sessions will be deducted, and the remaining balance refunded. A physician’s written explanation will be required before the refund is granted.</p>
+
+				<p><strong>Other Policies:</strong></p>
+				<p>Please be courteous to other clients by silencing your cell phone upon entering the studio, keeping a low voice in the hallways outside of classrooms and avoiding wearing heavy scented perfumes or lotions.</p>
+
+				<p><strong>Weather Cancellation Policy:</strong></p>
+				<p>We do not automatically follow the Montgomery County public school system’s lead when determining if the studio needs to close and classes cancelled due to inclement weather. In the event that we do cancel classes due to weather, our voicemail will be updated by 7 am for morning classes or two hours prior to afternoon classes. We do not have the capacity to call clients individually -- please make sure to check the studio voicemail message.</p>
+			</div>
+		</div>
+
+		<div class="modal-close">&#10005;</div>
 	</div>
 </div>
+
+<div class="modal-container" data-name="newsletter">
+	<div class="modal-content module">
+
+		<div class="dummy">
+			<div class="content">
+				
+			</div>
+		</div>
+
+		<div class="modal-close">&#10005;</div>
+	</div>
+</div>
+
 
 <div class="modal-cover"></div>
 <div class="exit-small-screen-menu"></div>
 
 </div><!-- #page -->
 
-<div class="modal-container">
-	<div class="modal-content module">
 
-		<div class="dummy">
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, quia, fugit ducimus minima praesentium esse repudiandae repellat quod incidunt soluta sint sit architecto magni. Iusto, non, consequuntur. Vero, omnis ullam?</p>
-			</div>
-		</div>
-
-		<div class="modal-close" data-toggle="modal">&#10005;</div>
-	</div>
-</div>
 
 <?php /* Modernizr and jQuery are included in the <head>, other scripts here */ ?>
 <script src="<?= bloginfo('template_url'); ?>/js/balance.min.js"></script>
 <?php if (is_page('Services')) { ?>
 	<script src="<?= bloginfo('template_url'); ?>/js/services.js"></script>
 <?php } ?>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45185542-1', 'booksatwork.org');
-  if (!cGet('booksatwork_admin')) {
-  	ga('send', 'pageview');
-  }
-</script>
 
 <?php wp_footer(); ?>
 </body>

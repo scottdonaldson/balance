@@ -1,7 +1,19 @@
 <?php 
 /*
-Template Name: Instructor Training
+Template Name: Therapeutic Treatments
 */
+
+function render_tables() { ?>
+	<script>
+	(function($){
+		var td = $('td');
+		td.css( 'width', 500 );
+	})(jQuery);
+	</script>
+<?php
+}
+add_action('wp_footer', 'render_tables');
+
 get_header();
 the_post(); ?>
 
@@ -48,42 +60,26 @@ the_post(); ?>
 	
 	<div class="full-width clearfix">
 
-		<div class="module first-child">
+		<?php
+		$treatments = get_field('therapy');
+		if ($treatments) {
+			foreach ($treatments as $treatment) { ?>
+
+				<div class="module first-child">
 			
-			<div class="content bg-purple heading">
-				<h2>Pilates</h2>
-			</div>
+					<div class="content bg-purple heading">
+						<h2><?= $treatment['name']; ?></h2>
+					</div>
 
-			<div class="content bg-white">
-				<?php the_field('pilates'); ?>
-			</div>
+					<div class="content bg-white">
+						<?= $treatment['description_pricing']; ?>
+					</div>
 
-		</div>
+				</div>
 
-		<div class="module not-first-child">
-			<div class="content bg-purple heading">
-				<h2>Vbarre</h2>
-			</div>
-			<div class="content bg-white">
-				<?php the_field('vbarre'); ?>
-			</div>
-		</div>
-		<div class="module not-first-child">
-			<div class="content bg-purple heading">
-				<h2>Gyrotonic</h2>
-			</div>
-			<div class="content bg-white">
-				<?php the_field('gyrotonic'); ?>
-			</div>
-		</div>
-		<div class="module not-first-child">
-			<div class="content bg-purple heading">
-				<h2>Yoga</h2>
-			</div>
-			<div class="content bg-white">
-				<?php the_field('yoga'); ?>
-			</div>
-		</div>
+			<?php }
+		}
+		?>
 
 	</div>
 
