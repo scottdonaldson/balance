@@ -9,6 +9,7 @@
 @import "reset";
 @import "colors";
 @import "layout";
+@import "forms";
 @import "fonts";
 @import "oldie";
 
@@ -797,6 +798,7 @@ main {
 		display: block;
 		font-size: 1.3em;
 		padding: 1em 1em 0.8em;
+		text-decoration: none;
 
 		&:active, &:focus, &:hover {
 			background: $purple;

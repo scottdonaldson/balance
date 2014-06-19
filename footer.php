@@ -65,7 +65,15 @@
 
 		<div class="dummy">
 			<div class="content">
-				
+				<form name="ccoptin" action="http://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post">
+					<h3>Sign up to receive our newsletter!</h3>
+					<input type="hidden" name="llr" value="vnhzs8aab">
+					<input type="hidden" name="m" value="1100437298613">
+					<input type="hidden" name="p" value="oi">
+					<label for="ea">Email:</label>
+					<input type="email" name="ea" id="ea">
+					<input type="submit" name="go" value="Go">
+				</form>
 			</div>
 		</div>
 

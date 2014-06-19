@@ -13,12 +13,16 @@ get_template_part('masthead');
 	<div class="full-width clearfix">
 
 		<div id="buttons" class="clearfix">
-			<div class="half first">
-				<a class="bg-turquoise white"><span class="icon-file"></span> Something here</a>
-			</div>
-			<div class="half last">
-				<a class="bg-turquoise white"><span class="icon-file"></span> Something here</a>
-			</div>
+			<?php if (get_field('pdf_1')) { ?>
+				<div class="half first">
+					<a class="bg-turquoise white" href="<?php the_field('pdf_1'); ?>"><span class="icon-file"></span> <?php the_field('pdf_1_title'); ?></a>
+				</div>
+			<?php } if (get_field('pdf_2')) { ?>
+				<div class="half last">
+					<a class="bg-turquoise white" href="<?php the_field('pdf_2'); ?>"><span class="icon-file"></span> <?php the_field('pdf_2_title'); ?></a>
+				</div>
+			<?php } ?>
+			
 		</div>
 
 		<?php
