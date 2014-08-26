@@ -64,8 +64,8 @@
 	<div class="modal-content module">
 
 		<div class="dummy">
-			<div class="content">
-				<form name="ccoptin" action="http://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post">
+			<div class="content vcenter">
+				<form name="ccoptin" action="http://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post" class="aligncenter">
 					<h3>Sign up to receive our newsletter!</h3>
 					<input type="hidden" name="llr" value="vnhzs8aab">
 					<input type="hidden" name="m" value="1100437298613">

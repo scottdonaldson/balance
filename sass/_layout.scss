@@ -41,3 +41,8 @@ $break_half: 800px;
 }
 .first { margin-top: 0; margin-left: 0 !important; }
 .last { margin-bottom: 0; margin-right: 0 !important; }
+
+.vcenter {
+	top: 50%;
+	transform: translateY(-50%);
+}

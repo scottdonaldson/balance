@@ -1,7 +1,3 @@
-/* 
- *	By config.rb, the CSS will always be minified.
- */
-
 // ----- imports
 
 @import "compass";
@@ -1315,13 +1311,17 @@ table {
 	height: 100%;
 	left: 0;
 	opacity: 0;
+	padding: 10%;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 300;
 
-	.modal-active & {
-		display: block;
+	&.modal-visible {
+
+		.modal-active & {
+			display: block;
+		}
 	}
 
 	&:before {
@@ -1338,8 +1338,6 @@ table {
 			background-image: url(../images/transparent_black.png);
 		}
 	}
-
-	padding: 10%;
 
 	@media screen and (max-width: $break_half) {
 		padding: 5%;

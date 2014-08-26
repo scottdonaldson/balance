@@ -132,14 +132,17 @@
 
 	// ----- Modal
 
+	var modals = $('.modal-container');
 	function showModal(e) {
 		e.preventDefault();
-		var modal = $('.modal-container[data-name="' + $(this).attr('data-modal') + '"]');
+		var modal = modals.filter('[data-name="' + $(this).attr('data-modal') + '"]');
 		body.addClass('modal-active');
-		modal.animate({ opacity: 1 });
+		modals.not(modal).removeClass('modal-visible');
+		modal.addClass('modal-visible').animate({ opacity: 1 });
 	}
 	function hideModal() {
-		$('.modal-container').animate({ opacity: 0 });
+		$('.modal-visible').animate({ opacity: 0 });
+		modals.removeClass('modal-active');
 		setTimeout(function(){ body.removeClass('modal-active') }, 300);
 	}
 	$('[data-modal]').click( showModal );
