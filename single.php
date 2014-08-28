@@ -25,7 +25,7 @@ the_post();
 							<img src="<?php the_field('featured_image'); ?>">
 						</a>
 						<?php } 
-						the_excerpt(); ?>
+						the_content(); ?>
 					</div>
 				</div>
 			</div>
