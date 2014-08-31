@@ -95,7 +95,7 @@
                         'container_class' => ''
                     )); ?>
                     <div class="social">
-                        <a href="#" class="icon-envelope"></a>
+                        <a href="mailto:info@balancestudio.com" class="icon-envelope"></a>
                         <a href="https://twitter.com/balancestudio" class="icon-twitter" target="_blank"></a>
                         <a href="https://www.facebook.com/balancestudio" class="icon-facebook" target="_blank"></a>
                     </div>

@@ -72,45 +72,59 @@ the_post(); ?>
 				<div class="clearfix content bg-white" style="display: none;"></div>
 			</div>
 
-			<?php if (get_field('instructors')) { ?>
+			<?php if ( get_field('instructor_types')) {
 
-				<div class="content bg-purple heading">
-					<h2>Instructors</h2>
-				</div>
+				$types = get_field('instructor_types');
+				foreach ( $types as $type ) {
+					
+					$title = get_field('title');
+					$info = get_field('info');
+					?>
 
-				<?php
-				$instructors = get_field('instructors');
-				$i = 0;
-				foreach ( $instructors as $instructor ) { 
-					if ($i % 3 === 0) { ?>
-						<div class="instructors">
-							<div class="clearfix">
-					<?php } ?>
+					<div class="content bg-purple heading">
+						<h2><?= $title; ?></h2>
+					</div>
 
-						<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<?= htmlentities($instructor['bio']); ?>">
-
-							<?php
-							$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );
-							$photo = $photo[0];
-							?>
-							<img src="<?= $photo; ?>">
-							<div class="content name lesser">
-								<div class="same-height clearfix" data-group="<?= floor($i / 3) + 1; ?>">
-									<h3><?= $instructor['name']; ?></h3> <span><?= $instructor['specialty_or_title']; ?></span>
-								</div>
-							</div>
-						</div>
-					<?php 
-					if ($i % 3 === 2 || $i + 1 === count($instructors) ) { ?>
-							</div><!-- .clearfix -->
-							<div class="clearfix content bg-white" style="display: none;"></div>
-						</div><!-- .instructors -->
+					<?php if ($info) { ?>
+						<div class="content bg-white"><?= $info; ?></div>
 					<?php } ?>
 
 					<?php
-					$i++;
-				}
-			}
+					if (get_field('instructors')) { 
+						$instructors = get_field('instructors');
+						$i = 0;
+						foreach ( $instructors as $instructor ) { 
+							if ($i % 3 === 0) { ?>
+								<div class="instructors">
+									<div class="clearfix">
+							<?php } ?>
+
+								<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<?= htmlentities($instructor['bio']); ?>">
+
+									<?php
+									$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );
+									$photo = $photo[0];
+									?>
+									<img src="<?= $photo; ?>">
+									<div class="content name lesser">
+										<div class="same-height clearfix" data-group="<?= floor($i / 3) + 1; ?>">
+											<h3><?= $instructor['name']; ?></h3> <span><?= $instructor['specialty_or_title']; ?></span>
+										</div>
+									</div>
+								</div>
+							<?php 
+							if ($i % 3 === 2 || $i + 1 === count($instructors) ) { ?>
+									</div><!-- .clearfix -->
+									<div class="clearfix content bg-white" style="display: none;"></div>
+								</div><!-- .instructors -->
+							<?php } ?>
+
+							<?php
+							$i++;
+						} // end instructors loop
+					} // end if instructors
+				} // end types loop
+			} // end if instructor types
 			?>
 
 		</div>

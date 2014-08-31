@@ -13,7 +13,7 @@
 			?>
 			<div class="module <?= $child; ?>-child">
 				<div class="content bg-white clearfix">
-					<div class="half">
+					<div class="entry-info">
 						<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 						<div class="entry-meta">
 							<time class="purple big"><strong><?php $date = get_the_date('n.d.y'); echo $date; ?></strong></time>
@@ -21,7 +21,7 @@
 							<span class="caps">Comments | <?php comments_number('0', '1', '%'); ?></span>
 						</div>
 					</div>
-					<div class="half last">
+					<div class="entry-container">
 						<div class="entry-content">
 							<?php if (get_field('featured_image')) { ?>
 							<a href="<?php the_permalink(); ?>" class="block" rel="bookmark">

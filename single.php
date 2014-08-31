@@ -10,7 +10,7 @@ the_post();
 	<div class="full-width clearfix">
 		<div class="module">
 			<div class="content bg-white clearfix">
-				<div class="half">
+				<div class="entry-info">
 					<h2 class="entry-title"><?php the_title(); ?></h2>
 					<div class="entry-meta">
 						<time class="purple big"><strong><?php $date = get_the_date('n.d.y'); echo $date; ?></strong></time>
@@ -18,7 +18,7 @@ the_post();
 						<span class="caps">Comments | <?php comments_number('0', '1', '%'); ?></span>
 					</div>
 				</div>
-				<div class="half last">
+				<div class="entry-container">
 					<div class="entry-content">
 						<?php if (get_field('featured_image')) { ?>
 						<a href="<?php the_permalink(); ?>" class="block" rel="bookmark">
@@ -29,9 +29,6 @@ the_post();
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="module">
-			
 		</div>
 	</div>
 
