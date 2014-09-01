@@ -114,7 +114,8 @@ header {
 			float: left;
 			margin: 0 2px;
 
-			& > a {
+			& > a,
+			& > a:visited {
 				background: $purple;
 				display: block;
 				color: #fff;
@@ -534,7 +535,7 @@ $break_home_updates_small: 400px;
 		min-height: ($from_blog - 4px) / 3;
 
 		&.active, &:active, &:hover {
-			.title { color: $default; }
+			.title { color: $purple; }
 		}
 	}
 

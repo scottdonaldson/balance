@@ -67,7 +67,9 @@
 	// ----- Home page updates and specials
 
 	$('#updates-specials .header').click(function(){
-		$(this).toggleClass('active').next().slideToggle();
+		var $this = $(this);
+		$this.toggleClass('active').next().slideToggle();
+		$this.closest('article').siblings().find('.header').removeClass('active').next().slideUp();
 	});
 
 	// ----- "Scroll down" paragraph (if only on one line)

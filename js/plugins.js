@@ -30,11 +30,6 @@ BALANCE.makeSameHeight = function() {
             targetHeight = $this.height() > targetHeight ? $this.height() : targetHeight;
             
             $this.height(targetHeight);
-
-            $this.find('.vcenter').each(function(){
-                var _this = $(this);
-                _this.css('top', $this.height() > _this.height() ? ($this.height() - _this.height()) / 2 : 0);
-            });
         });
     }
 }
