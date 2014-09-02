@@ -77,11 +77,11 @@ the_post(); ?>
 				$types = get_field('instructor_types');
 				foreach ( $types as $type ) {
 					
-					$title = get_field('title');
-					$info = get_field('info');
+					$title = $type['title'];
+					$info = $type['info'];
 					?>
 
-					<div class="content bg-purple heading">
+					<div class="content bg-purple heading module not-first-child">
 						<h2><?= $title; ?></h2>
 					</div>
 
@@ -90,8 +90,8 @@ the_post(); ?>
 					<?php } ?>
 
 					<?php
-					if (get_field('instructors')) { 
-						$instructors = get_field('instructors');
+					if ( $type['instructors'] ) { 
+						$instructors = $type['instructors'];
 						$i = 0;
 						foreach ( $instructors as $instructor ) { 
 							if ($i % 3 === 0) { ?>
@@ -101,11 +101,7 @@ the_post(); ?>
 
 								<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<?= htmlentities($instructor['bio']); ?>">
 
-									<?php
-									$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );
-									$photo = $photo[0];
-									?>
-									<img src="<?= $photo; ?>">
+									<img src="<?= $instructor['photo']; ?>">
 									<div class="content name lesser">
 										<div class="same-height clearfix" data-group="<?= floor($i / 3) + 1; ?>">
 											<h3><?= $instructor['name']; ?></h3> <span><?= $instructor['specialty_or_title']; ?></span>

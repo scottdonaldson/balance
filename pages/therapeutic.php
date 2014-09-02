@@ -48,12 +48,6 @@ the_post(); ?>
 		</div>
 	</div>
 
-	<div id="tabbed-nav">
-		<a class="tab brandon" href="<?= home_url(); ?>/instructors">
-			<span class="icon-arrow-right"></span>Instructors
-		</a>
-	</div>
-
 </section>
 
 <section id="content">

@@ -35,10 +35,10 @@
             'container_class' => ''
         )); ?>
         <li>
-            <a href="#">Schedule Appt</a>
+            <a href="https://clients.mindbodyonline.com/ASP/home.asp?studioid=628" target="_blank">Schedule Appt</a>
         </li>
         <li>
-            <a href="#">Client Login</a>
+            <a href="https://clients.mindbodyonline.com/ASP/home.asp?studioid=628" target="_blank">Client Login</a>
         </li>
         <hr>
         <div class="aligncenter"><h3>Find Us</h3>
@@ -103,10 +103,10 @@
                 <span>Menu</span>
             </li>
             <li>
-                <a href="#">Schedule Appt</a>
+                <a href="https://clients.mindbodyonline.com/ASP/home.asp?studioid=628" target="_blank">Schedule Appt</a>
             </li>
             <li>
-                <a href="#">Client Login</a>
+                <a href="https://clients.mindbodyonline.com/ASP/home.asp?studioid=628" target="_blank">Client Login</a>
             </li>
             <li id="find-us" class="highlight" menu-target="find-us-menu">
                 <a href="#">Find us!</a>
