@@ -6,10 +6,11 @@ get_header();
 the_post(); ?>
 
 <?php
-$services_page = get_page_by_title('Services');
-$services_page_id = $services_page->ID;
-$services = get_field('type', $services_page_id);
-
+// NOT GREAT. We're hardcoding it.
+// $services_page = get_page_by_title('Services');
+// $services_page_id = $services_page->ID;
+// $services = get_field('type', $services_page_id);
+$services = get_field('type', 16);
 $z = 100;
 
 foreach ($services as $service) { 

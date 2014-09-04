@@ -76,6 +76,10 @@ a, a:visited {
 
 	&:active, &:focus, &:hover {
 		color: $purple;
+
+		&.white {
+			color: #fff;
+		}
 	}
 }
 
@@ -571,6 +575,12 @@ $break_home_updates_small: 400px;
 		color: #fff;
 		display: none;
 		padding: 2em;
+
+		a, a:visited {
+			&:active, &:focus, &:hover {
+				color: #fff;
+			}
+		}
 	}
 }
 
