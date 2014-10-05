@@ -43,7 +43,7 @@
         <hr>
         <div class="aligncenter"><h3>Find Us</h3>
             <address class="delicious lowercase">4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
-            <span class="delicious lowercase tel">T. <tel>301.986.1730</tel></span><br>
+            <span class="delicious lowercase tel"><tel>301.986.1730</tel></span><br>
             <a href="#">Get Google Directions</a>
         </div>
     </ul>
@@ -65,7 +65,7 @@
                     <a class="content footer" href="#">Get Google Directions</a>
                 </div>
                 <address>4719 Rosedale Ave.<br>Bethesda, MD 20814</address>
-                <span class="tel">T. <tel></tel>301.986.1730</span>
+                <span class="tel"><tel>301.986.1730</tel></span>
 
                 <h3>Parking</h3>
                 <div class="lowercase delicious">
