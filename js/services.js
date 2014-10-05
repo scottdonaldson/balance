@@ -68,7 +68,7 @@
 
 					metaBlock.clone().html('<h4><small>$</small> ' + cost + '</h4><aside class="cost">Cost <span class="plus">+</span></aside>').appendTo(metaInfo);
 
-					metaBlock.clone().addClass('last-meta-block').html('<a href="#">View <br>Schedule</a>').appendTo(metaInfo);
+					metaBlock.clone().addClass('last-meta-block').html('<a href="https://clients.mindbodyonline.com/classic/home?studioid=628" target="_blank">View <br>Schedule</a>').appendTo(metaInfo);
 
 					metaInfo.append(discount);
 
@@ -122,9 +122,11 @@
 				});
 
 				$(this).add( $(this).prev() ).on('mouseenter', function(){
-					var $this = $(this);
-					$this.closest('.module').find('.discount').slideDown();
-					$this.closest('.module').find('.plus').html('-');
+					if (!$('html').hasClass('touch')) {
+						var $this = $(this);
+						$this.closest('.module').find('.discount').slideDown();
+						$this.closest('.module').find('.plus').html('-');
+					}
 				});
 
 			});

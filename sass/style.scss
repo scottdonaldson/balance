@@ -344,6 +344,10 @@ header {
 			text-decoration: none;
 			&:active, &:focus, &:hover { color: $purple; }
 		}
+
+		address {
+			margin-bottom: 0.5em;
+		}
 	}
 }
 
@@ -439,6 +443,10 @@ header {
 
 	#content &.not-first-child {
 		margin-top: 5em;
+
+		@media screen and (max-width: $break_half) {
+			margin-top: 2.5em;
+		}
 	}
 }
 
@@ -523,6 +531,10 @@ $break_home_updates_small: 400px;
 		img { display: block; width: 100%; }
 		p:first-child { margin-top: 0; }
 		p:last-child { margin-bottom: 0; }
+
+		&.no-updates {
+			padding-right: 0;
+		}
 	}
 
 	.post {
@@ -582,6 +594,13 @@ $break_home_updates_small: 400px;
 			}
 		}
 	}
+
+	.vcenter {
+		@media screen and (max-width: $break_half) {
+			top: 0;
+			transform: translateY(0);
+		}
+	}
 }
 
 	#from-blog {
@@ -612,6 +631,12 @@ $break_home_updates_small: 400px;
 		h2 { 
 			font-size: 1.3em;
 			margin-top: 2px;
+		}
+
+		.no-updates & {
+			height: auto;
+			position: relative;
+			width: 100%;
 		}
 	}
 
@@ -1095,6 +1120,8 @@ main {
 }
 
 table {
+	overflow-x: scroll;
+
 	&,
 	& tbody {
 		display: block;

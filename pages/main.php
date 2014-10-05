@@ -2,8 +2,41 @@
 /*
 Template Name: Main Page
 */
+
 get_header();
 the_post(); ?>
+
+<?php
+$months = array(
+	'01' => 'Jan', 
+	'02' => 'Feb', 
+	'03' => 'Mar', 
+	'04' => 'Apr', 
+	'05' => 'May', 
+	'06' => 'Jun', 
+	'07' => 'Jul', 
+	'08' => 'Aug', 
+	'09' => 'Sep', 
+	'10' => 'Oct', 
+	'11' => 'Nov', 
+	'12' => 'Dec'
+);
+// Loop through the updates and specials to build array of current ones
+$rows = get_field('updates_and_specials');
+$updates_and_specials = array();
+
+foreach ( $rows as $row ) {
+
+	// Dates to be formatted and output
+	$start_date = $row['start_date'];
+	$end_date = $row['end_date'];
+
+	// Only display if this is an upcoming or ongoing update or special
+	if (date('Ymd') <= $start_date || ($end_date && date('Ymd') <= $end_date)) {
+		$updates_and_specials[] = $row;
+	}
+}
+?>
 
 <?php
 // NOT GREAT. We're hardcoding it.
@@ -26,7 +59,7 @@ foreach ($services as $service) {
 					<h2><?= $service['name']; ?></h2>
 					<p><?= $service['intro_title_text']; ?></p>
 				</div>
-				<a class="content footer" href="<?= home_url(); ?>/services/#<?= $slug; ?>">View <?= $service['name']; ?> Services</a>
+				<a class="content footer" href="<?= services_url() . '#' . $slug; ?>">View <?= $service['name']; ?> Services</a>
 			</div>
 		</div>
 	</div>
@@ -38,8 +71,11 @@ $z--;
 
 <div id="updates-specials" style="z-index: 1;">
 	<div class="full-width">
+		<?php if ($updates_and_specials) { ?>
 		<h3>Updates &amp; Specials</h3>
-		<section>
+		<?php } ?>
+
+		<section class="<?= !$updates_and_specials ? 'no-updates' : ''; ?>">
 			<?php
 				$blog_query = new WP_Query(array(
 					'posts_per_page' => 1
@@ -50,88 +86,62 @@ $z--;
 					<span class="uppercase green">From the blog</span>
 					<h2><?= limit_text(get_the_title(), 18); ?></h2>
 				</a>
-			<?php endwhile; wp_reset_postdata(); ?>
+			<?php endwhile; wp_reset_postdata();
 		
-			<?php
-			$months = array(
-				'01' => 'Jan', 
-				'02' => 'Feb', 
-				'03' => 'Mar', 
-				'04' => 'Apr', 
-				'05' => 'May', 
-				'06' => 'Jun', 
-				'07' => 'Jul', 
-				'08' => 'Aug', 
-				'09' => 'Sep', 
-				'10' => 'Oct', 
-				'11' => 'Nov', 
-				'12' => 'Dec'
-			);
-			// Loop through the updates and specials
-			$rows = get_field('updates_and_specials');
 			$i = 0;
-			foreach ($rows as $row) {
+			foreach ( $updates_and_specials as $row ) {
 
-				// Dates to be formatted and output
-				$start_date = $row['start_date'];
-				$end_date = $row['end_date'];
+				$name = $row['name'];
+				$featured_image = $row['featured_image'];
+				$description = $row['description'];
 
-				// Only display if this is an upcoming or ongoing update or special
-				if (date('Ymd') <= $start_date || ($end_date && date('Ymd') <= $end_date)) {
+				// Format the output
+				// If the month in the start date starts with a 0, trim it for the output
+				$output_date = $months[substr($start_date, 4, 2)];
 
-					$name = $row['name'];
-					$featured_image = $row['featured_image'];
-					$description = $row['description'];
+				// space
+				$output_date .= ' ';
+				// day
+				$output_date .= trim_zeros(substr($start_date, 6, 2));
 
-					// Format the output
-					// If the month in the start date starts with a 0, trim it for the output
-					$output_date = $months[substr($start_date, 4, 2)];
+				// if we're in a range of dates
+				if ($end_date) {
+					// Check if it ends in the same month
+					if ( substr($start_date, 4, 2) === substr($end_date, 4, 2) ) {
+						$output_date .= '-';
 
-					// space
-					$output_date .= ' ';
-					// day
-					$output_date .= trim_zeros(substr($start_date, 6, 2));
-
-					// if we're in a range of dates
-					if ($end_date) {
-						// Check if it ends in the same month
-						if ( substr($start_date, 4, 2) === substr($end_date, 4, 2) ) {
-							$output_date .= '-';
-
-						// If not in the same month, include end month
-						} else {
-							$output_date .= ' - ';
-							$output_date .= $months[substr($end_date, 4, 2)];
-							$output_date .= ' ';
-						}
-						$output_date .= trim_zeros(substr($end_date, 6, 2));
+					// If not in the same month, include end month
+					} else {
+						$output_date .= ' - ';
+						$output_date .= $months[substr($end_date, 4, 2)];
+						$output_date .= ' ';
 					}
-					?>	
-					<article class="post clearfix">
-						<div class="header">
-							<time>
-								<div class="same-height" data-group="<?= $i; ?>"><?= $output_date; ?></div>
-							</time>
-							<div class="title">
-								<div class="same-height" data-group="<?= $i; ?>"><div class="vcenter"><?= $name; ?></div></div>
-							</div>
+					$output_date .= trim_zeros(substr($end_date, 6, 2));
+				}
+				?>	
+				<article class="post clearfix">
+					<div class="header">
+						<time>
+							<div class="same-height" data-group="<?= $i; ?>"><?= $output_date; ?></div>
+						</time>
+						<div class="title">
+							<div class="same-height" data-group="<?= $i; ?>"><div class="vcenter"><?= $name; ?></div></div>
 						</div>
-						<?php if ($featured_image || $description) { ?>
-						<div class="summary">
-							<div class="content">
-								<?php if ($featured_image) { ?>
-									<img src="<?= $featured_image; ?>">
-								<?php } ?>
-								<?= $description; ?>
-							</div>
+					</div>
+					<?php if ($featured_image || $description) { ?>
+					<div class="summary">
+						<div class="content">
+							<?php if ($featured_image) { ?>
+								<img src="<?= $featured_image; ?>">
+							<?php } ?>
+							<?= $description; ?>
 						</div>
-						<?php } ?>
-					</article>
-				<?php } 
-
-				$i++;
-			}
-			?>
+					</div>
+					<?php } ?>
+				</article>
+			<?php 
+			$i++;
+			} ?>
 
 		</section>
 	</div>

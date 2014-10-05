@@ -4,8 +4,12 @@
 register_nav_menu('primary', 'Primary Menu');
 
 // Add image sizes
-add_image_size('square', 400, 400, true);
+add_image_size('square', 500, 500, true);
 add_image_size('rectangle', 1200, 300, true);
+
+function services_url() {
+  return home_url() . '/?page_id=16';
+}
 
 // include jQuery
 if (!is_admin()) add_action("wp_enqueue_scripts", "my_jquery_enqueue", 11);

@@ -94,6 +94,10 @@ the_post(); ?>
 						$instructors = $type['instructors'];
 						$i = 0;
 						foreach ( $instructors as $instructor ) { 
+
+							$photo = wp_get_attachment_image_src( $instructor['photo'], 'square' );
+							$photo = $photo[0];
+
 							if ($i % 3 === 0) { ?>
 								<div class="instructors">
 									<div class="clearfix">
@@ -101,7 +105,7 @@ the_post(); ?>
 
 								<div class="instructor <?php if ($i % 3 === 0) { echo 'first'; } else if ($i % 3 === 2) { echo 'last'; } ?>" data-bio="<?= htmlentities($instructor['bio']); ?>">
 
-									<img src="<?= $instructor['photo']; ?>">
+									<img src="<?= $photo; ?>">
 									<div class="content name lesser">
 										<div class="same-height clearfix" data-group="<?= floor($i / 3) + 1; ?>">
 											<h3><?= $instructor['name']; ?></h3> <span><?= $instructor['specialty_or_title']; ?></span>

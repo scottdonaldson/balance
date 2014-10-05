@@ -47,7 +47,7 @@ get_template_part('masthead');
 
 				<div class="content clearfix bg-white">
 					<div class="learn-more">
-						<a href="<?= home_url(); ?>/services/#<?= urlencode(strtolower($title)); ?>">
+						<a href="<?= services_url() . '#' . urlencode(strtolower($title)); ?>">
 							Learn more about<br>
 							<span class="big">private lessons</span>
 						</a>
